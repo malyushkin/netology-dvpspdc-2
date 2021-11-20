@@ -36,7 +36,7 @@ VBoxManage: error: Details: code NS_ERROR_FAILURE (0x80004005), component Machin
 
 5. Ознакомьтесь с графическим интерфейсом VirtualBox, посмотрите как выглядит виртуальная машина, которую создал для вас Vagrant, какие аппаратные ресурсы ей выделены. Какие ресурсы выделены по-умолчанию?
 
-![UI VirtualBox 1](img/Screenshot 2021-11-19 at 20.29.12.png)
+![UI VirtualBox 1](img/vb1.png)
 
 Согласно интерфейсу VirtualBox, выделены следующие ресурсы:
 
@@ -63,7 +63,7 @@ end
 
 Затем выключить `vagrant halt` и перезапустить Vagrant `vagrant up`.
 
-![UI VirtualBox 2](img/Screenshot 2021-11-19 at 20.53.14.png)
+![UI VirtualBox 2](img/vb2.png)
 
 Ресурсы изменились.
 
