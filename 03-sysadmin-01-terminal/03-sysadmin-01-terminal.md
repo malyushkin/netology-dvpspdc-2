@@ -3,7 +3,7 @@
 1. Скачал и установил VirtualBox 6.1.28 (по [ссылке](https://download.virtualbox.org/virtualbox/6.1.28/VirtualBox-6.1.28-147628-OSX.dmg))
 2. Скачал и установил Vagrant 2.2.19 (по [ссылке](https://releases.hashicorp.com/vagrant/2.2.19/vagrant_2.2.19_x86_64.dmg))
 3. Создал папку `vagrant` командой `mkdir vagrant` 
-4. Далее, изменил содержимое `Vagrantfile` на то, что представлено в задании и запустил `vagrant up`. 
+4. Далее, изменил содержимое `Vagrantfile` на то, что представлено в задании и запустил `vagrant up`
 
 В первый раз не вышло, ошибка:
 
@@ -36,19 +36,19 @@ VBoxManage: error: Details: code NS_ERROR_FAILURE (0x80004005), component Machin
 
 5. Ознакомьтесь с графическим интерфейсом VirtualBox, посмотрите как выглядит виртуальная машина, которую создал для вас Vagrant, какие аппаратные ресурсы ей выделены. Какие ресурсы выделены по-умолчанию?
 
-![UI VirtualBox](img/Screenshot 2021-11-19 at 20.29.12.png)
+![UI VirtualBox 1](img/Screenshot 2021-11-19 at 20.29.12.png)
 
 Согласно интерфейсу VirtualBox, выделены следующие ресурсы:
 
 **Система**
 * Base memory: 1024 MB
 * Processors: 2
-... 
+* ... 
 
 **Дисплей**
 * Video memory: 4 MB
 * Graphics Controller: VBoxVGA
-...
+* ...
 
 6. Ознакомьтесь с возможностями конфигурации VirtualBox через Vagrantfile: документация. Как добавить оперативной памяти или ресурсов процессора виртуальной машине?
 
@@ -63,7 +63,7 @@ end
 
 Затем выключить `vagrant halt` и перезапустить Vagrant `vagrant up`.
 
-![UI VirtualBox](img/Screenshot 2021-11-19 at 20.53.14.png)
+![UI VirtualBox 2](img/Screenshot 2021-11-19 at 20.53.14.png)
 
 Ресурсы изменились.
 
@@ -71,8 +71,8 @@ end
 
 * какой переменной можно задать длину журнала `history`, и на какой строчке manual это описывается?
 
-  1. Посмотрим на каких строках упоминается команда `history` командой `man bash | grep -n history`.
-  2. После этого командой `man bash | sed -n 'X,+Yp'` посмотрим упоминания команды и найдём переменную задающую длину журнала. Командой `cat -n` выведем номера строк.
+  1. Посмотрим на каких строках упоминается команда `history` командой `man bash | grep -n history`
+  2. После этого командой `man bash | sed -n 'X,+Yp'` посмотрим упоминания команды и найдём переменную задающую длину журнала. Командой `cat -n` выведем номера строк
 
 ```bash
 man bash | grep -n history
@@ -97,7 +97,7 @@ man bash | cat -n | sed -n '620,+20p'
 ...
 ```
 
-Переменная `HISTFILESIZE` задаёт длину журнала `history`, описынвается на 627-628 строках.  
+Переменная `HISTFILESIZE` задаёт длину журнала `history`, описывается на 627-628 строках.
 
 * что делает директива `ignoreboth` в bash?
 
