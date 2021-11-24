@@ -5,7 +5,7 @@
 Для выполнения задачи ввёл команду (перенаправил поток stderr на stdout и нашёл все строки в которых указан путь `/tmp`):
 
 ```bash
-strace /bin/bash -c 'cd /tmp' 2>&1 | grep \/tmp
+vagrant@vagrant:~$ strace /bin/bash -c 'cd /tmp' 2>&1 | grep \/tmp
 ```
 
 В результате 3 строки:
@@ -67,20 +67,16 @@ while True:
 Далее, запустим скрипт и выведем его PID:
 
 ```bash
-python3 log.py &
-```
+vagrant@vagrant:~$ python3 log.py &
 
-```bash
 [1] 2310
 ```
 
 Проверим информацию в `ps`:
 
 ```bash
-ps aux | grep python3
-```
+vagrant@vagrant:~$ ps aux | grep python3
 
-```bash
 ...
 vagrant     2310  0.2  0.4  18420  8928 pts/0    S    20:47   0:00 python3 log.py
 ...
@@ -89,18 +85,14 @@ vagrant     2310  0.2  0.4  18420  8928 pts/0    S    20:47   0:00 python3 log.p
 Убедимся, что запись в файл работает:
 
 ```bash
-wc -l log.txt
-```
+vagrant@vagrant:~$ wc -l log.txt
 
-```bash
 6
 ```
 
 ```bash
-cat log.txt
-```
+vagrant@vagrant:~$ cat log.txt
 
-```bash
 new log file
 new line
 new line
@@ -112,16 +104,14 @@ new line
 Удалим файл:
 
 ```bash
-rm log.txt
+vagrant@vagrant:~$ rm log.txt
 ```
 
 Выведем файлы, используемые процессом `2310`:
 
 ```bash
-lsof -p 2310
-```
+vagrant@vagrant:~$ lsof -p 2310
 
-```bash
 ...
 python3 2310 vagrant    3w   REG  253,0       22 131092 /home/vagrant/log.txt
 ...
@@ -130,24 +120,17 @@ python3 2310 vagrant    3w   REG  253,0       22 131092 /home/vagrant/log.txt
 Проверим, что запись в удалённый файл работает:
 
 ```bash
-wc -l /proc/2310/fd/3
-```
+vagrant@vagrant:~$ wc -l /proc/2310/fd/3
 
-```bash
 4
 ```
 
 С помощью команды `truncate` очистим файл и проверим его размер: 
 
 ```bash
-truncate -s 0 /proc/2310/fd/3
-```
+vagrant@vagrant:~$  truncate -s 0 /proc/2310/fd/3
+vagrant@vagrant:~$  wc -l /proc/2310/fd/3
 
-```bash
-wc -l /proc/2310/fd/3
-```
-
-```bash
 0
 ```
 
@@ -192,7 +175,7 @@ sudo apt install manpages-dev
 Командой `man 2 uname` найдём альтернативный способ получения версии ядра или релиз ОС
 
 ```bash
-man 2 uname
+vagrant@vagrant:~$ man 2 uname
 
 ...
 Part of the utsname information is also accessible via /proc/sys/kernel/{ostype, hostname, osrelease, version, domainname}.
