@@ -159,7 +159,7 @@ vagrant@vagrant:~$ ulimit -n
 
 Создаём namespace для процесса `sleep 1h`:
 ```bash
-root@vagrant:~$ unshare -f --pid --mount-proc sleep 1h & - создаем новый нэймспейс для процесса sleep 1h
+root@vagrant:~$ unshare -f --pid --mount-proc sleep 1h &
 
 [1] 1446
 ```
