@@ -68,7 +68,7 @@ Referrer Policy: strict-origin-when-cross-origin
 ```bash
 roman@MacBook-Pro-admin % curl ifconfig.me
 
-188.243.84.76%                            
+188.243.84.7*%                            
 ```
 
 ---
