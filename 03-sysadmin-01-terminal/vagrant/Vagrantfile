@@ -1,11 +1,23 @@
+boxes = {
+  'netology1' => '10',
+  'netology2' => '60',
+  'netology3' => '90',
+}
+
 Vagrant.configure("2") do |config|
+  config.vm.network "private_network", virtualbox__intnet: true, auto_config: false
   config.vm.box = "bento/ubuntu-20.04"
-  config.vm.provider :virtualbox do |vb|
-    lvm_experiments_disk0_path = "/tmp/lvm_experiments_disk0.vmdk"
-    lvm_experiments_disk1_path = "/tmp/lvm_experiments_disk1.vmdk"
-    vb.customize ['createmedium', '--filename', lvm_experiments_disk0_path, '--size', 2560]
-    vb.customize ['createmedium', '--filename', lvm_experiments_disk1_path, '--size', 2560]
-    vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', lvm_experiments_disk0_path]
-    vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', 2, '--device', 0, '--type', 'hdd', '--medium', lvm_experiments_disk1_path]
+
+  boxes.each do |k, v|
+    config.vm.define k do |node|
+      node.vm.provision "shell" do |s|
+        s.inline = "hostname $1;"\
+          "ip addr add $2 dev eth1;"\
+          "ip link set dev eth1 up;"\
+          "apt -y install nginx;"
+        s.args = [k, "172.28.128.#{v}/24"]
+      end
+    end
   end
+
 end
