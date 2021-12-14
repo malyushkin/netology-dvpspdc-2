@@ -77,9 +77,9 @@ en4: flags=8963<UP,BROADCAST,SMART,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1500
 
 2. Какой протокол используется для распознавания соседа по сетевому интерфейсу? Какой пакет и команды есть в Linux для этого? 
 
-Для распознавания соседа используется протокол Link Layer Discovery Protocol (LLDP). В Linux есть пакет `lldpd`. Для практики не с первого раза поднял [новый образ](https://github.com/netology-code/sysadm-homeworks/blob/devsys10/03-sysadmin-07-net/Vagrantfile) Vagrant. На устрйоствах MacOS общая ошибка, решилась с помощью инструкции [тут](https://vc.ru/dev/287597-virtualbox-na-mac-kernel-driver-not-installed-rc-1908-proverennoe-reshenie). 
+Для распознавания соседа используется протокол Link Layer Discovery Protocol (LLDP). В Linux есть пакет `lldpd`. Для практики не с первого раза поднял [новый образ](https://github.com/netology-code/sysadm-homeworks/blob/devsys10/03-sysadmin-07-net/Vagrantfile) Vagrant (тк на устрйоствах MacOS общая ошибка, решилась с помощью инструкции [тут](https://vc.ru/dev/287597-virtualbox-na-mac-kernel-driver-not-installed-rc-1908-proverennoe-reshenie)). 
 
-Далее, на всех трёх машинах выполнил `sudo apt-get upgrade`, затем `sudo apt-get install lldpd`. Запускаю сервис `sudo systemctl enable lldpd && systemctl start lldpd`.
+Далее, на всех трёх машинах выполняем `sudo apt-get upgrade`, затем `sudo apt-get install lldpd`. Запускаем сервис `sudo systemctl enable lldpd && systemctl start lldpd`.
 
 С помощью команды `lldpctl` смотрим раздел `LLDP neighbors`:
 
@@ -176,7 +176,7 @@ Broadcast: 192.168.1.7          11000000.10101000.00000001.00000 111
 Hosts/Net: 6                     Class C, Private Internet
 ```
 
-В результате, видимо что: 
+В результате видимо, что: 
 * Битовая маска: /29 
 * Сетевая маска: 255.255.255.248
 * Адрес сети: 192.168.1.1
@@ -210,7 +210,7 @@ Hosts/Net: 254                   Class A, Private Internet
 
 6. Задача: вас попросили организовать стык между 2-мя организациями. Диапазоны 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 уже заняты. Из какой подсети допустимо взять частные IP адреса? Маску выберите из расчета максимум 40-50 хостов внутри подсети.
 
-Это частные подсети. Необходимо использовать незанятую: 100.64.0.0 — 100.127.255.255. Маска /10. 
+Это частные подсети. Необходимо использовать свободную: 100.64.0.0 — 100.127.255.255 (маска /10). 
 
 Используем сеть 100.64.0.0/26 (на 62 хоста).
 
