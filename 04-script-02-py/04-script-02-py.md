@@ -101,7 +101,7 @@ for result in result_os.split('\n'):
 
 Для тестирования создал файл логов, где для `drive.google.com` указал верный адрес:
 
-```txt
+```
 drive.google.com    64.233.165.194
 mail.google.com 0.0.0.0
 google.com  0.0.0.0
