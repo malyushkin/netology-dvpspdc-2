@@ -108,6 +108,8 @@ google.com  0.0.0.0
 ```
 
 ```python
+#!/usr/bin/env python3
+
 from socket import gethostbyname
 
 file = open("last_check", "r")
@@ -123,10 +125,12 @@ for name in dns.keys():
 
 ### Вывод скрипта при запуске при тестировании:
 
-```http request
+```
 drive.google.com: 64.233.165.194
 [ERROR] mail.google.com IP mismatch: 0.0.0.0 209.85.233.83
 mail.google.com: 209.85.233.83
 [ERROR] google.com IP mismatch: 0.0.0.0 74.125.131.138
 google.com: 74.125.131.138
 ```
+
+Python-скрипты доступны в директории занятия `04-script-02-py`.
