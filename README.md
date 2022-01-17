@@ -12,7 +12,7 @@
 6. [Работа в терминале 1](03-sysadmin-01-terminal/README.md) | [Задание](03-sysadmin-01-terminal/03-sysadmin-01-terminal-task.md)
 7. [Работа в терминале 2](03-sysadmin-02-terminal/README.md) | [Задание](03-sysadmin-02-terminal/03-sysadmin-02-terminal-task.md)
 8. [Операционные системы 1](03-sysadmin-03-os/README.md) | [Задание](03-sysadmin-03-os/03-sysadmin-03-os-task.md)
-9. [Операционные системы 2](03-sysadmin-04-os/README.md) | [Задание](03-sysadmin-04/03-sysadmin-04-task.md)
+9. [Операционные системы 2](03-sysadmin-04-os/README.md) | [Задание](03-sysadmin-04-os/03-sysadmin-04-os-task.md)
 10. [Файловые системы](03-sysadmin-05-fs/README.md)
 11. [Компьютерные сети 1](03-sysadmin-06-net/README.md) | [Задание](03-sysadmin-06-net/03-sysadmin-06-net-task.md)
 12. [Компьютерные сети 2](03-sysadmin-07-net/README.md) | [Задание](03-sysadmin-07-net/03-sysadmin-07-net-task.md)
