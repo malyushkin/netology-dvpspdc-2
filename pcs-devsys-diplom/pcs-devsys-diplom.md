@@ -340,7 +340,7 @@ serial_number       1f:e9:a3:c5:3a:3d:55:f2:e6:37:8a:da:0c:a3:50:a0:48:b6:fc:f6
 
 Скопируем корневой сертификат в shared folder, и установим его на хостовой машине (macOS Big Sur):
 
-![Certificate-keychain](img/certificate-keychain.png)
+<img src="img/certificate-keychain.png" data-canonical-src="img/certificate-keychain.png" width="600" align="center"/>
 
 <img src="img/certificate-keychain.png" data-canonical-src="img/certificate-keychain.png" width="200" align="center"/>
 
