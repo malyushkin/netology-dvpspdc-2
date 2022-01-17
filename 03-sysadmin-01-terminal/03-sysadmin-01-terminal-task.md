@@ -1,4 +1,4 @@
-[Источник](https://github.com/netology-code/sysadm-homeworks/blob/master/03-sysadmin-01-terminal/README.md) (2021-11-20)
+[Источник](https://github.com/netology-code/sysadm-homeworks/blob/devsys10/03-sysadmin-01-terminal/README.md) (2021-11-20)
 
 ---
 
