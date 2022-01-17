@@ -1,4 +1,4 @@
-https://raw.githubusercontent.com/netology-code/sysadm-homeworks/devsys10/04-script-01-bash/README.md (2021-12-19)
+[Источник](https://github.com/netology-code/sysadm-homeworks/tree/devsys10/04-script-01-bash/README.md) (2021-12-19)
 
 ---
 
