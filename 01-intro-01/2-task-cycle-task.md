@@ -1,4 +1,4 @@
-https://github.com/netology-code/sysadm-homeworks/blob/master/01-intro-01/README.md (2021-10-24)
+[Источник](https://github.com/netology-code/sysadm-homeworks/blob/master/01-intro-01/README.md) (2021-10-24)
 
 ---
 
