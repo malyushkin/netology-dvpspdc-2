@@ -4,7 +4,7 @@
 
 ### Практические задания 
 
-1. [Введение в DevOps](01-intro-01/README.md) | [Задание](01-intro-01/2-task-cycle-task.md) 
+1. [Введение в DevOps](01-intro-01/README.md) | [Задание](01-intro-01/01-intro-01-task.md) 
 2. [Системы контроля версий](02-git-01-vcs/README.md) | [Задание](02-git-01-vcs/02-git-01-vcs-task.md)
 3. [Основы Git](02-git-02-base/README.md) | [Задание](02-git-02-base/02-git-02-base-task.md)
 4. [Ветвления в Git](02-git-03-branching/README.md) | [Задание](02-git-03-branching/02-git-03-branching-task.md)
