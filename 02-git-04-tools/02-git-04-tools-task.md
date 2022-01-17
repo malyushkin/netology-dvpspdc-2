@@ -1,4 +1,4 @@
-https://github.com/netology-code/sysadm-homeworks/blob/devsys10/02-git-04-tools/README.md (2021-11-05)
+[Источник](https://github.com/netology-code/sysadm-homeworks/blob/devsys10/02-git-04-tools/README.md) (2021-11-05)
 
 ---
 
