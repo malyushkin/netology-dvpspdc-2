@@ -1,4 +1,4 @@
-# Ход работы
+# Практическое задание по теме «Работа в терминале 1»
 
 1. Скачал и установил VirtualBox 6.1.28 (по [ссылке](https://download.virtualbox.org/virtualbox/6.1.28/VirtualBox-6.1.28-147628-OSX.dmg))
 2. Скачал и установил Vagrant 2.2.19 (по [ссылке](https://releases.hashicorp.com/vagrant/2.2.19/vagrant_2.2.19_x86_64.dmg))
