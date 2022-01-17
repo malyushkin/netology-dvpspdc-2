@@ -1,4 +1,4 @@
-[Источник](https://github.com/netology-code/sysadm-homeworks/blob/master/04-script-03-yaml/README.md) (2022-01-16)
+[Источник](https://github.com/netology-code/sysadm-homeworks/blob/devsys10/04-script-03-yaml/README.md) (2022-01-16)
 
 ---
 
