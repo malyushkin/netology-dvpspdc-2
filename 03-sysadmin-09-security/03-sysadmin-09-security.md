@@ -158,7 +158,6 @@ roman@roman-VirtualBox:~$ ip addr show
     inet6 fe80::daeb:db58:7dfa:d79e/64 scope link noprefixroute 
        valid_lft forever preferred_lft forever
 3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
-
 ...
 ```
 
