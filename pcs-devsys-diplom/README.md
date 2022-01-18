@@ -342,8 +342,6 @@ serial_number       1f:e9:a3:c5:3a:3d:55:f2:e6:37:8a:da:0c:a3:50:a0:48:b6:fc:f6
 
 <img src="img/certificate-keychain.png" data-canonical-src="img/certificate-keychain.png" width="600" align="center"/>
 
-<img src="img/certificate-keychain.png" data-canonical-src="img/certificate-keychain.png" width="200" align="center"/>
-
 ---
 
 3. Процесс установки и настройки сервера nginx 
