@@ -17,10 +17,10 @@
 1. [Компьютерные сети 1](03-sysadmin-06-net/README.md) | [Задание](03-sysadmin-06-net/03-sysadmin-06-net-task.md)
 1. [Компьютерные сети 2](03-sysadmin-07-net/README.md) | [Задание](03-sysadmin-07-net/03-sysadmin-07-net-task.md)
 1. [Компьютерные сети 3](03-sysadmin-08-net/README.md) | [Задание](03-sysadmin-08-net/03-sysadmin-08-net-task.md)
-1. Элементы безопасности информационных систем | [Задание](03-sysadmin-09-security/03-sysadmin-09-security-task.md)
+1. [Элементы безопасности информационных систем](03-sysadmin-09-security/README.md) | [Задание](03-sysadmin-09-security/03-sysadmin-09-security-task.md)
 1. [Командная оболочка Bash: практические навыки](04-script-01-bash/README.md) | [Задание](04-script-01-bash/04-script-01-bash-task.md)
 1. [Использование Python для решения типовых DevOps задач](04-script-02-py/README.md) | [Задание](04-script-02-py/04-script-02-py-task.md)
-1. Языки разметки JSON и YAML | [Задание](04-script-03-yaml/04-script-03-yaml-task.md)
+1. [Языки разметки JSON и YAML](04-script-03-yaml/README.md) | [Задание](04-script-03-yaml/04-script-03-yaml-task.md)
 
 ### Итоговая работа по модулю
 

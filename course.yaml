@@ -59,7 +59,7 @@ sections:
   - code: 03-sysadmin-09-security
     title: Элементы безопасности информационных систем
     task: 03-sysadmin-09-security/03-sysadmin-09-security-task.md
-    result: null
+    result: 03-sysadmin-09-security/README.md
   - code: 04-script-01-bash
     title: 'Командная оболочка Bash: практические навыки'
     task: 04-script-01-bash/04-script-01-bash-task.md
@@ -71,7 +71,7 @@ sections:
   - code: 04-script-03-yaml
     title: Языки разметки JSON и YAML
     task: 04-script-03-yaml/04-script-03-yaml-task.md
-    result: null
+    result: 04-script-03-yaml/README.md
   exams:
   - code: pcs-devsys-diplom
     title: DevOps и системное администрирование
