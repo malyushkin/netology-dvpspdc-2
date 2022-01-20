@@ -6,7 +6,7 @@ sections:
   lessons:
   - code: 01-intro-01
     title: Введение в DevOps
-    task: 01-intro-01/01-intro-01-task.md
+    task: 01-intro-01/01-intro-01-task.mds
     result: 01-intro-01/README.md
   - code: 02-git-01-vcs
     title: Системы контроля версий
@@ -81,8 +81,8 @@ sections:
   lessons:
   - code: 05-virt-01-basics
     title: Введение в виртуализацию. Типы и функции гипервизоров. Обзор рынка вендоров и областей применения
-    task: null
-    result: null
+    task: 05-virt-01-basics/05-virt-01-basics-task.md
+    result: 05-virt-01-basics/README.md
   - code: 05-virt-02-control-systems
     title: Применение принципов IaaC в работе с виртуальными машинами
     task: null
