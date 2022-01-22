@@ -1,66 +1,70 @@
-import yaml
+"""GitHub Markdown README generator"""
+
 from datetime import datetime
+import sys
+import yaml
 
-yml_name = "course.yaml"
-md_name = "README.md"
+FILE = dict(yml_name="course.yaml",
+            md_name="README.md")
 
-code_key = "code"
-exams_key = "exams"
-lessons_key = "lessons"
-result_key = "result"
-task_key = "task"
-title_key = "title"
+KEY = dict(code_key="code",
+           exams_key="exams",
+           lessons_key="lessons",
+           result_key="result",
+           task_key="task",
+           title_key="title")
 
-with open(yml_name, "r") as yml:
-    course = yaml.safe_load(yml)
 
-with open(md_name, "w") as md:
-    # Course title
-    md.write(f"# {course[title_key]}")
+def write_md_section_title(section_title):
+    """Write course section title in Markdown"""
+    md.write(f"## {section_title}")
+    md.write("\n\n")
+
+
+def write_md_section_list(section_list):
+    """Write course section list in Markdown"""
+    for section_list_item in section_list:
+        if section_list_item[KEY['result_key']]:
+            md.write(f"1. [{section_list_item[KEY['title_key']]}]"\
+                     f"({section_list_item[KEY['result_key']]})")
+        else:
+            md.write(f"1. {section_list_item[KEY['title_key']]}")
+            print(f"\033[1m{datetime.now()}\033[0m\t{section_list_item[KEY['code_key']]}"\
+                  f"\tkey '{KEY['result_key']}' is null")
+
+        if section_list_item[KEY['task_key']]:
+            md.write(f" | [Задание]({section_list_item[KEY['task_key']]})")
+            md.write("\n")
+        else:
+            md.write("\n")
+            print(f"\033[1m{datetime.now()}\033[0m\t{section_list_item[KEY['code_key']]}"\
+                  f"\tkey '{KEY['task_key']}' is null")
+
     md.write("\n")
 
-    # Section title
+
+with open(FILE['yml_name'], "r", encoding="utf-8") as yml:
+    course = yaml.safe_load(yml)
+
+with open(FILE['md_name'], "w", encoding="utf-8") as md:
+    md.write(f"# {course[KEY['title_key']]}")
+    md.write("\n\n")
+
+    if "sections" not in course:
+        sys.exit()
+
+    # Section
     for section in course['sections']:
-        md.write("\n")
-        md.write(f"## {section[title_key]}")
-        md.write("\n\n")
+        write_md_section_title(section[KEY['title_key']])
 
-        if lessons_key in section:
-            # Lessons title
-            md.write(f"### Практические задания")
+        if KEY['lessons_key'] in section:
+            # Lessons
+            md.write("### Практические задания")
             md.write("\n\n")
+            write_md_section_list(section[KEY['lessons_key']])
 
-            for lesson in section[lessons_key]:
-                if lesson[result_key]:
-                    md.write(f"1. [{lesson[title_key]}]({lesson[result_key]})")
-                else:
-                    md.write(f"1. {lesson[title_key]}")
-                    print(f"\033[1m{datetime.now()}\033[0m\t{lesson[code_key]}\tkey '{result_key}' is null")
-
-                if lesson[task_key]:
-                    md.write(f" | [Задание]({lesson[task_key]})")
-                    md.write("\n")
-                else:
-                    md.write("\n")
-                    print(f"\033[1m{datetime.now()}\033[0m\t{lesson[code_key]}\tkey '{task_key}' is null")
-
-            md.write("\n")
-
-        if exams_key in section:
-            # Exams title
-            md.write(f"### Итоговая работа по модулю")
+        if KEY['exams_key'] in section:
+            # Exams
+            md.write("### Итоговая работа по модулю")
             md.write("\n\n")
-
-            for exam in section[exams_key]:
-                if exam[result_key]:
-                    md.write(f"[{exam[title_key]}]({exam[result_key]})")
-                else:
-                    md.write(f"{exam[title_key]}")
-                    print(f"\033[1m{datetime.now()}\033[0m\t{exam[code_key]}\tkey '{result_key}' is null")
-
-                if exam[task_key]:
-                    md.write(f" | [Задание]({exam[task_key]})")
-                    md.write("\n")
-                else:
-                    md.write("\n")
-                    print(f"\033[1m{datetime.now()}\033[0m\t{exam[code_key]}\tkey '{task_key}' is null")
+            write_md_section_list(section[KEY['exams_key']])
