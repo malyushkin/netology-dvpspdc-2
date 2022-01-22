@@ -83,7 +83,7 @@ sections:
     title: Введение в виртуализацию. Типы и функции гипервизоров. Обзор рынка вендоров и областей применения
     task: 05-virt-01-basics/05-virt-01-basics-task.md
     result: 05-virt-01-basics/README.md
-  - code: 05-virt-02-control-systems
+  - code: 05-virt-02-iaac
     title: Применение принципов IaaC в работе с виртуальными машинами
-    task: null
-    result: null
+    task: 05-virt-02-iaac/05-virt-02-iaac-task.md
+    result: 05-virt-02-iaac/README.md
