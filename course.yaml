@@ -6,7 +6,7 @@ sections:
   lessons:
   - code: 01-intro-01
     title: Введение в DevOps
-    task: 01-intro-01/01-intro-01-task.mds
+    task: 01-intro-01/01-intro-01-task.md
     result: 01-intro-01/README.md
   - code: 02-git-01-vcs
     title: Системы контроля версий
