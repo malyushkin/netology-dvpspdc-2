@@ -68,7 +68,7 @@ docker image tag webserver malyushkin/webserver:latest
 Опубликуем Docker-образ по адресу `malyushkin/webserver`:
 
 ```bash
-docker image tag webserver malyushkin/webserver:latest
+docker image push malyushkin/webserver:latest
 ```
 
 Ссылка на Docker-образ: https://hub.docker.com/r/malyushkin/webserver
