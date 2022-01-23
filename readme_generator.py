@@ -53,18 +53,18 @@ with open(FILE['md_name'], "w", encoding="utf-8") as md:
     if "sections" not in course:
         sys.exit()
 
-    # Section
+    # Sections
     for section in course['sections']:
         write_md_section_title(section[KEY['title_key']])
 
+        # Lessons
         if KEY['lessons_key'] in section:
-            # Lessons
             md.write("### Практические задания")
             md.write("\n\n")
             write_md_section_list(section[KEY['lessons_key']])
 
+        # Exams
         if KEY['exams_key'] in section:
-            # Exams
             md.write("### Итоговая работа по модулю")
             md.write("\n\n")
             write_md_section_list(section[KEY['exams_key']])

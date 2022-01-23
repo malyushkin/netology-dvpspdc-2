@@ -87,3 +87,8 @@ sections:
     title: Применение принципов IaaC в работе с виртуальными машинами
     task: 05-virt-02-iaac/05-virt-02-iaac-task.md
     result: 05-virt-02-iaac/README.md
+  - code: 05-virt-03-docker
+  - title: Введение. Экосистема. Архитектура. Жизненный цикл Docker контейнера
+  - task: 05-virt-03-docker/05-virt-03-docker-usage-task.md
+  - result: 05-virt-03-docker/README.md
+
