@@ -91,4 +91,8 @@ sections:
     title: Введение. Экосистема. Архитектура. Жизненный цикл Docker контейнера
     task: 05-virt-03-docker/05-virt-03-docker-task.md
     result: 05-virt-03-docker/README.md
+  - code: 05-virt-04-docker-compose
+    title: Оркестрация группой Docker контейнеров на примере Docker Compose
+    task: 05-virt-04-docker-compose/05-virt-04-docker-compose-task.md
+    result: 05-virt-04-docker-compose/README.md
 
