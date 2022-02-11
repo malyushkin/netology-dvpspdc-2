@@ -117,3 +117,27 @@ sections:
     presentation: 05-virt-05-docker-swarm/05-virt-05-docker-swarm-presentation.pdf
     task: 05-virt-05-docker-swarm/05-virt-05-docker-swarm-task.md
     result: 05-virt-05-docker-swarm/README.md
+  - code: 06-db-01-basics
+    title: Типы и структура СУБД
+    task: null
+    result: null
+  - code: 06-db-02-sql
+    title: SQL
+    task: null
+    result: null
+  - code: 06-db-03-mysql
+    title: MySQL
+    task: null
+    result: null
+  - code: 06-db-04-postgresql
+    title: PostgreSQL
+    task: null
+    result: null
+  - code: 06-db-05-elasticsearch
+    title: Elasticsearch
+    task: null
+    result: null
+  - code: 06-db-06-troobleshooting
+    title: Troubleshooting
+    task: null
+    result: null
