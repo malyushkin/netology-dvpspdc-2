@@ -91,18 +91,26 @@ sections:
   lessons:
   - code: 05-virt-01-basics
     title: Введение в виртуализацию. Типы и функции гипервизоров. Обзор рынка вендоров и областей применения
+    presentation: 05-virt-01-basics/05-virt-01-basics-presentation.pdf
     task: 05-virt-01-basics/05-virt-01-basics-task.md
     result: 05-virt-01-basics/README.md
   - code: 05-virt-02-iaac
     title: Применение принципов IaaC в работе с виртуальными машинами
+    presentation: 05-virt-02-iaac/05-virt-02-iaac-presentation.pdf
     task: 05-virt-02-iaac/05-virt-02-iaac-task.md
     result: 05-virt-02-iaac/README.md
   - code: 05-virt-03-docker
     title: Введение. Экосистема. Архитектура. Жизненный цикл Docker контейнера
+    presentation: 05-virt-03-docker/05-virt-03-docker-presentation.pdf
     task: 05-virt-03-docker/05-virt-03-docker-task.md
     result: 05-virt-03-docker/README.md
   - code: 05-virt-04-docker-compose
     title: Оркестрация группой Docker контейнеров на примере Docker Compose
+    presentation: 05-virt-04-docker-compose/05-virt-04-docker-compose-presentation.pdf
     task: 05-virt-04-docker-compose/05-virt-04-docker-compose-task.md
     result: 05-virt-04-docker-compose/README.md
-
+  - code: 05-virt-05-docker-swarm
+    title: Оркестрация кластером Docker контейнеров на примере Docker Swarm
+    presentation: 05-virt-05-docker-swarm/05-virt-05-docker-swarm-presentation.pdf
+    task: 05-virt-05-docker-swarm/05-virt-05-docker-swarm-task.md
+    result: 05-virt-05-docker-swarm/README.md
