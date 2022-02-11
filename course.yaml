@@ -72,14 +72,17 @@ sections:
     result: 03-sysadmin-09-security/README.md
   - code: 04-script-01-bash
     title: 'Командная оболочка Bash: практические навыки'
+    presentation: 04-script-01-bash/04-script-01-bash-presentation.pdf
     task: 04-script-01-bash/04-script-01-bash-task.md
     result: 04-script-01-bash/README.md
   - code: 04-script-02-py
     title: Использование Python для решения типовых DevOps задач
+    presentation: 04-script-02-py/04-script-02-py-presentation.pdf
     task: 04-script-02-py/04-script-02-py-task.md
     result: 04-script-02-py/README.md
   - code: 04-script-03-yaml
     title: Языки разметки JSON и YAML
+    presentation: 04-script-03-yaml/04-script-03-yaml-presentation.pdf
     task: 04-script-03-yaml/04-script-03-yaml-task.md
     result: 04-script-03-yaml/README.md
   exams:
