@@ -35,4 +35,10 @@
 1. [Введение. Экосистема. Архитектура. Жизненный цикл Docker контейнера](05-virt-03-docker/README.md) | [Задание](05-virt-03-docker/05-virt-03-docker-task.md)
 1. [Оркестрация группой Docker контейнеров на примере Docker Compose](05-virt-04-docker-compose/README.md) | [Задание](05-virt-04-docker-compose/05-virt-04-docker-compose-task.md)
 1. [Оркестрация кластером Docker контейнеров на примере Docker Swarm](05-virt-05-docker-swarm/README.md) | [Задание](05-virt-05-docker-swarm/05-virt-05-docker-swarm-task.md)
+1. Типы и структура СУБД
+1. SQL
+1. MySQL
+1. PostgreSQL
+1. Elasticsearch
+1. Troubleshooting
 
