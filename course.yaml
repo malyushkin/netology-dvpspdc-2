@@ -119,8 +119,9 @@ sections:
     result: 05-virt-05-docker-swarm/README.md
   - code: 06-db-01-basics
     title: Типы и структура СУБД
-    task: null
-    result: null
+    presentation: 06-db-01-basics/06-db-01-basics-presentation.pdf
+    task: 06-db-01-basics/06-db-01-basics-task.md
+    result: 06-db-01-basics/README.md
   - code: 06-db-02-sql
     title: SQL
     task: null
