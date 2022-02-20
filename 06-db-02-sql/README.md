@@ -71,10 +71,10 @@ test_db=# \d
 
 ```sql
 test_db=# \d clients
-                         Table "public.clients"
-    Column    |          Type          | Collation | Nullable | Default
---------------+------------------------+-----------+----------+---------
- client_id    | integer                |           | not null |
+                                          Table "public.clients"
+    Column    |          Type          | Collation | Nullable |                  Default
+--------------+------------------------+-----------+----------+--------------------------------------------
+ client_id    | integer                |           | not null | nextval('clients_client_id_seq'::regclass)
  last_name    | character varying(256) |           | not null |
  country_name | character varying(256) |           | not null |
  order_id     | integer                |           |          |
@@ -82,12 +82,12 @@ Indexes:
     "clients_pkey" PRIMARY KEY, btree (client_id)
 Foreign-key constraints:
     "clients_order_id_fkey" FOREIGN KEY (order_id) REFERENCES orders(order_id)
-    
+                         
 test_db=# \d orders
-                       Table "public.orders"
-  Column  |          Type          | Collation | Nullable | Default
-----------+------------------------+-----------+----------+---------
- order_id | integer                |           | not null |
+                                        Table "public.orders"
+  Column  |          Type          | Collation | Nullable |                 Default
+----------+------------------------+-----------+----------+------------------------------------------
+ order_id | integer                |           | not null | nextval('orders_order_id_seq'::regclass)
  name     | character varying(256) |           | not null |
  price    | integer                |           |          |
 Indexes:
