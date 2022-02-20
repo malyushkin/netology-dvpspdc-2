@@ -124,8 +124,9 @@ sections:
     result: 06-db-01-basics/README.md
   - code: 06-db-02-sql
     title: SQL
-    task: null
-    result: null
+    presentation: 06-db-02-sql/06-db-02-sql-presentation.pdf
+    task: 06-db-02-sql/06-db-02-sql-task.md
+    result: 06-db-02-sql/README.md
   - code: 06-db-03-mysql
     title: MySQL
     task: null

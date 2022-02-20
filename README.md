@@ -36,7 +36,7 @@
 1. [Оркестрация группой Docker контейнеров на примере Docker Compose](05-virt-04-docker-compose/README.md) | [Задание](05-virt-04-docker-compose/05-virt-04-docker-compose-task.md)
 1. [Оркестрация кластером Docker контейнеров на примере Docker Swarm](05-virt-05-docker-swarm/README.md) | [Задание](05-virt-05-docker-swarm/05-virt-05-docker-swarm-task.md)
 1. [Типы и структура СУБД](06-db-01-basics/README.md) | [Задание](06-db-01-basics/06-db-01-basics-task.md)
-1. SQL
+1. [SQL](06-db-02-sql/README.md) | [Задание](06-db-02-sql/06-db-02-sql-task.md)
 1. MySQL
 1. PostgreSQL
 1. Elasticsearch
