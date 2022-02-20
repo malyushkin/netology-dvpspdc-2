@@ -23,9 +23,6 @@ postgres               12            185652ba8110   21 hours ago   371MB
 ╰─➤  docker-compose up -d
 ```
 
-
-docker-compose down && docker volume rm docker_netology_pgdata && docker volume rm docker_netology_pgbackup
-
 ## Задача 2
 
 В БД из задачи 1: 
