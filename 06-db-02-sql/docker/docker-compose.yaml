@@ -1,0 +1,34 @@
+# version: "3.8"
+
+services:
+  postgres:
+    image: postgres:12
+    container_name: netology_postgres
+    volumes:
+      - netology_pgdata:/var/lib/postgresql/data
+      - netology_pgbackup:/dump
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./sql/insert.sql:/docker-entrypoint-initdb.d/insert.sql
+      - ./sql/update.sql:/docker-entrypoint-initdb.d/update.sql
+    restart: always
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+  postgres_copy:
+    image: postgres:12
+    container_name: netology_postgres_copy
+    volumes:
+      - netology_pgdata_copy:/var/lib/postgresql/data
+      - netology_pgbackup:/dump
+    restart: always
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+volumes:
+  netology_pgdata: {}
+  netology_pgbackup: {}
+  netology_pgdata_copy: {}
