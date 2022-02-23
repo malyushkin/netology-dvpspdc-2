@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  mysql:
+    build: .
+    container_name: netology_mysql
+    volumes:
+      - netology_mysqldata:/var/lib/mysql
+      - ./test_dump.sql:/home/romanm/test_dump.sql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD:
+      MYSQL_DATABASE: mysql
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+
+volumes:
+  netology_mysqldata: {}
+
+
