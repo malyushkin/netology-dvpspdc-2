@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  postgres:
+    build: .
+    container_name: netology_postgresql
+    volumes:
+      - ./netology_postgresqldata:/var/lib/postgresql/data
+      - ./test_dump.sql:/home/romanm/test_dump.sql
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: netology
+      PGUSER: root
+      PGPASSWORD: netology
+
+volumes:
+  netology_mysqldata: {}
+
+
