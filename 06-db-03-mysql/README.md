@@ -21,7 +21,13 @@
 
 ### Ход работы
 
-Настроим [Docker манифест](docker/docker-compose.yaml) и запустим `docker-compose`. Зайдём в созданный контейнер:
+Настроим [Docker манифест](docker/docker-compose.yaml) и запустим `docker-compose`.
+
+```shell
+docker-compose build
+```
+
+Зайдём в созданный контейнер:
 
 ```shell
 ╰─➤ docker-compose up -d --remove-orphans
@@ -111,8 +117,8 @@ Threads: 2  Questions: 82  Slow queries: 0  Opens: 195  Flush tables: 3  Open ta
 Подключимся к БД `netology` и выведем список таблиц:
 
 ```mysql
-mysql> use netology;
-mysql> show tables;
+mysql> USE netology;
+mysql> SHOW tables;
 +--------------------+
 | Tables_in_netology |
 +--------------------+
@@ -188,7 +194,7 @@ mysql> GRANT SELECT ON netology.* TO 'test'@'localhost';
 Query OK, 0 rows affected, 1 warning (0.01 sec)
 ```
 
-Даннеые `INFORMATION_SCHEMA.USER_ATTRIBUTES`:
+Даннеые `information_schema.user_attributes`:
 
 ```mysql
 SELECT * 
@@ -200,4 +206,122 @@ WHERE user = 'test';
 | test | localhost | {"fname": "James", "lname": "Pretty"} |
 +------+-----------+---------------------------------------+
 1 row in set (0.00 sec)
+```
+
+## Задача 3
+
+Установите профилирование `SET profiling = 1`.
+Изучите вывод профилирования команд `SHOW PROFILES;`.
+
+Исследуйте, какой `engine` используется в таблице БД `test_db` и **приведите в ответе**.
+
+Измените `engine` и **приведите время выполнения и запрос на изменения из профайлера в ответе**:
+- на `MyISAM`
+- на `InnoDB`
+
+### Ход работы
+
+Установка профилирования:
+
+```mysql
+mysql> SET profiling = 1;
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+```
+
+Зафиксируем время выполнения запроса `SELECT * FROM orders WHERE price > 100;`: 
+
+```mysql
+mysql> SELECT * FROM orders WHERE price > 100;
++----+-----------------------+-------+
+| id | title                 | price |
++----+-----------------------+-------+
+|  2 | My little pony        |   500 |
+|  3 | Adventure mysql times |   300 |
+|  4 | Server gravity falls  |   300 |
+|  5 | Log gossips           |   123 |
++----+-----------------------+-------+
+4 rows in set (0.00 sec)
+
+mysql> SHOW profiles;
++----------+------------+----------------------------------------+
+| Query_ID | Duration   | Query                                  |
++----------+------------+----------------------------------------+
+|        1 | 0.00174250 | SELECT * FROM orders WHERE price > 100 |
++----------+------------+----------------------------------------+
+1 row in set, 1 warning (0.00 sec)
+```
+
+Проверим движок:
+
+```mysql
+mysql> SELECT table_schema, table_name, engine
+    -> FROM information_schema.tables
+    -> WHERE table_name = 'orders';
++--------------+------------+--------+
+| TABLE_SCHEMA | TABLE_NAME | ENGINE |
++--------------+------------+--------+
+| netology     | orders     | InnoDB |
++--------------+------------+--------+
+1 row in set (0.01 sec)
+```
+
+Используется движок `InnoDB`. Сменим на `MyISAM` и так же зафиксируем время выполнения: 
+
+```mysql
+mysql> ALTER TABLE orders ENGINE = MyISAM;
+Query OK, 5 rows affected (0.18 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM orders WHERE price > 100;
++----+-----------------------+-------+
+| id | title                 | price |
++----+-----------------------+-------+
+|  2 | My little pony        |   500 |
+|  3 | Adventure mysql times |   300 |
+|  4 | Server gravity falls  |   300 |
+|  5 | Log gossips           |   123 |
++----+-----------------------+-------+
+4 rows in set (0.00 sec)
+
+mysql> SHOW profiles;
++----------+------------+----------------------------------------+
+| Query_ID | Duration   | Query                                  |
++----------+------------+----------------------------------------+
+|        4 | 0.00059400 | SELECT * FROM orders WHERE price > 100 |
++----------+------------+----------------------------------------+
+```
+
+* **InnoDB**: Время выполнения: 0.00174250. 
+* **MyISAM**: Время выполнения: 0.00059400.
+
+## Задача 4 
+
+Изучите файл `my.cnf` в директории /etc/mysql.
+
+Измените его согласно ТЗ (движок InnoDB):
+- Скорость IO важнее сохранности данных
+- Нужна компрессия таблиц для экономии места на диске
+- Размер буффера с незакомиченными транзакциями 1 Мб
+- Буффер кеширования 30% от ОЗУ
+- Размер файла логов операций 100 Мб
+
+Приведите в ответе измененный файл `my.cnf`.
+
+### Ход работы
+
+Сохраним копию файла `/etc/mysql/my.cnf`:
+
+```shell
+cp /etc/mysql/my.cnf /etc/mysql/my.cnf.bak
+```
+
+Дополним файл my.cnf следующими строками (в порядке предъявляемых требований):
+
+```shell
+innodb_flush_method=O_DSYNC
+innodb_flush_log_at_trx_commit=2
+innodb_file_per_table=ON
+innodb_log_buffer_size=1M
+innodb_buffer_pool_size=2G
+innodb_log_file_size=100M
 ```
