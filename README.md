@@ -38,7 +38,7 @@
 1. [Типы и структура СУБД](06-db-01-basics/README.md) | [Задание](06-db-01-basics/06-db-01-basics-task.md)
 1. [SQL](06-db-02-sql/README.md) | [Задание](06-db-02-sql/06-db-02-sql-task.md)
 1. [MySQL](06-db-03-mysql/README.md) | [Задание](06-db-03-mysql/06-db-03-mysql-task.md)
-1. PostgreSQL
+1. [PostgreSQL](06-db-04-postgresql/README.md) | [Задание](06-db-04-postgresql/06-db-04-postgresql-task.md)
 1. Elasticsearch
 1. Troubleshooting
 
