@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+  centos:
+    build: .
+    container_name: netology_elasticsearch
+    ports:
+      - '9200:9200'
+      - '9300:9300'
