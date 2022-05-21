@@ -134,13 +134,16 @@ sections:
     result: 06-db-03-mysql/README.md
   - code: 06-db-04-postgresql
     title: PostgreSQL
+    presentation: 06-db-04-postgresql/06-db-04-postgresql-presentation.pdf
     task: 06-db-04-postgresql/06-db-04-postgresql-task.md
     result: 06-db-04-postgresql/README.md
   - code: 06-db-05-elasticsearch
     title: Elasticsearch
+    presentation: 06-db-05-elasticsearch/06-db-05-elasticsearch-presentation.pdf
     task: 06-db-05-elasticsearch/06-db-05-elasticsearch-task.md
     result: 06-db-05-elasticsearch/README.md
   - code: 06-db-06-troobleshooting
     title: Troubleshooting
+    presentation: 06-db-06-troobleshooting/06-db-06-troobleshooting-presentation.pdf
     task: 06-db-06-troobleshooting/06-db-06-troobleshooting-task.md
     result: 06-db-06-troobleshooting/README.md
