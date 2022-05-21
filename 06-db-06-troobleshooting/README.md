@@ -105,7 +105,7 @@ printf 'connect_timeout=60\ninteractive_timeout=60\nwait_timeout=60' >> /etc/mys
 
 Это указывает на недостаток оперативной памяти. Необходимо исследовать настройки выделения памяти процессу `postgres`.
 
-В Linux можно конфигурировать переменную `/proc/sys/vm/overcommit_memory`. Подробнее из [источника](https://access.redhat.com/documentation/ru-ru/red_hat_enterprise_linux/6/html/performance_tuning_guide/s-memory-captun):
+В Linux можно конфигурировать переменную `/proc/sys/vm/overcommit_memory`. Подробнее из [документации](https://access.redhat.com/documentation/ru-ru/red_hat_enterprise_linux/6/html/performance_tuning_guide/s-memory-captun):
 
 > Определяет условия разрешения и отказа запросов больших объемов памяти. Возможные значения:
 > * 0 (по умолчанию) — ядро использует эвристический алгоритм для расчета перерасхода памяти, принимая во внимание объем доступной памяти и число неверных запросов. Но поскольку выделение памяти осуществляется на основе эвристического, а не точного алгоритма, это может привести к превышению допустимой нагрузки на память.
