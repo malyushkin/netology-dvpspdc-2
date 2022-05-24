@@ -41,4 +41,6 @@
 1. [PostgreSQL](06-db-04-postgresql/README.md) | [Задание](06-db-04-postgresql/06-db-04-postgresql-task.md)
 1. [Elasticsearch](06-db-05-elasticsearch/README.md) | [Задание](06-db-05-elasticsearch/06-db-05-elasticsearch-task.md)
 1. [Troubleshooting](06-db-06-troobleshooting/README.md) | [Задание](06-db-06-troobleshooting/06-db-06-troobleshooting-task.md)
+1. [Инфраструктура как код](07-terraform-01-intro/README.md) | [Задание](07-terraform-01-intro/07-terraform-01-intro-task.md)
+1. Основы Terraform
 
