@@ -157,3 +157,8 @@ sections:
     presentation:
     task:
     result:
+  - code: 09-ci-01-intro
+    title: Жизненный цикл ПО
+    presentation: 09-ci-01-intro/09-ci-01-intro-presentation.pdf
+    task: 09-ci-01-intro/09-ci-01-intro-task.md
+    result: 09-ci-01-intro/README.md
