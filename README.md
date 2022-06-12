@@ -44,4 +44,5 @@
 1. [Инфраструктура как код](07-terraform-01-intro/README.md) | [Задание](07-terraform-01-intro/07-terraform-01-intro-task.md)
 1. Основы Terraform
 1. [Жизненный цикл ПО](09-ci-01-intro/README.md) | [Задание](09-ci-01-intro/09-ci-01-intro-task.md)
+1. [Процессы CI/CD](09-ci-02-cicd/README.md) | [Задание](09-ci-02-cicd/09-ci-02-cicd-task.md)
 
