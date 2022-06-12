@@ -33,7 +33,7 @@ cp ~/Downloads/sonar-scanner-4.7.0.2747-macosx/bin/sonar-scanner /usr/local/bin/
 #### Ход работы
 
 1. Создаём проект под названием `netology`.
-2. Скачиваем [SonarScanner](https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-macosx.zip) 
+2. Скачиваем [SonarScanner](https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-macosx.zip).
 3. Добавим бинарный файл в переменную `PATH`:
 
 ```shell
