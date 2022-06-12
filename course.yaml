@@ -162,3 +162,8 @@ sections:
     presentation: 09-ci-01-intro/09-ci-01-intro-presentation.pdf
     task: 09-ci-01-intro/09-ci-01-intro-task.md
     result: 09-ci-01-intro/README.md
+  - code: 09-ci-02-cicd
+    title: Процессы CI/CD
+    presentation: 09-ci-02-cicd/09-ci-02-cicd-presentation.pdf
+    task: 09-ci-02-cicd/09-ci-02-cicd-task.md
+    result: 09-ci-02-cicd/README.md
