@@ -118,7 +118,7 @@ cat /nexus-data/admin.password
 
 Так же можно ознакомиться с [XML-файлом](nexus/maven-metadata.xml).
 
-### Знакомство с Maven
+## Знакомство с Maven
 
 ### Подготовка к выполнению
 
