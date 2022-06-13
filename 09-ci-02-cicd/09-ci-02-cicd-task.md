@@ -1,3 +1,7 @@
+[Источник](https://github.com/Prividen/mnt-homeworks/blob/0fe2c50c4fc71a5280b79fddc09fb6440d99298d/09-ci-03-cicd/README.md) (2022-06-13)
+
+---
+
 # Домашнее задание к занятию "09.02 CI\CD"
 
 ## Знакомоство с SonarQube
