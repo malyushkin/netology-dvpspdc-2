@@ -70,6 +70,94 @@ sonar-scanner \
 
 ![SonarQube fixed](img/SonarQube-fixed.png)
 
-...
+## Знакомство с Nexus
 
+### Подготовка к выполнению
 
+1. Выполняем `docker pull sonatype/nexus3`
+2. Выполняем `docker run -d -p 8081:8081 --name nexus sonatype/nexus3`
+3. Ждём запуск, смотрим логи через `docker logs -f nexus`
+4. Проверяем готовность сервиса через [бразуер](http://localhost:8081)
+5. Узнаём пароль от admin через `docker exec -it nexus /bin/bash`
+6. Подключаемся под админом, меняем пароль, сохраняем анонимный доступ
+
+#### Ход работы
+
+Проделаем шаги из списка выше и получим результат:
+
+![Nexus main](img/Nexus-main.png)
+
+Для получения пароля введём команду:
+
+```shell
+cat /nexus-data/admin.password
+524f7975-64dd-4e49-b3c1-b5f0f8c37851
+```
+
+Затем, авторизируемся в интерфейсе Nexus:
+
+![Nexus main signed](img/Nexus-main-signed.png)
+
+### Основная часть
+
+1. В репозиторий `maven-public` загружаем артефакт с GAV параметрами:
+   1. groupId: netology
+   2. artifactId: java
+   3. version: 8_282
+   4. classifier: distrib
+   5. type: tar.gz
+2. В него же загружаем такой же артефакт, но с version: 8_102
+3. Проверяем, что все файлы загрузились успешно
+4. В ответе присылаем файл `maven-metadata.xml` для этого артефекта
+
+#### Ход работы
+
+Создаём файлы. В результате получаем директорию:
+
+![Nexus files](img/Nexus-files.png)
+
+Так же можно ознакомиться с [XML-файлом](nexus/maven-metadata.xml).
+
+### Знакомство с Maven
+
+### Подготовка к выполнению
+
+1. Скачиваем дистрибутив с [maven](https://maven.apache.org/download.cgi)
+2. Разархивируем, делаем так, чтобы binary был доступен через вызов в shell (или меняем переменную PATH или любой другой удобный вам способ)
+3. Проверяем `mvn --version`
+4. Забираем директорию [mvn](./mvn) с pom
+
+#### Ход работы
+
+1. Скачиваем дистрибутив по [ссылке](https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz). 
+2. Распаковываем и прописывает путь в `$PATH`:
+
+```shell
+export PATH=/Users/romanmalyushkin/Downloads/apache-maven-3.8.6/bin/:$PATH
+```
+
+3. Проверяем `mvn --version`:
+
+```shell
+mvn --version
+Apache Maven 3.8.6 (84538c9988a25aec085021c365c560670ad80f63)
+Maven home: /Users/romanmalyushkin/Downloads/apache-maven-3.8.6
+Java version: 1.8.0_191, vendor: Oracle Corporation, runtime: /Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home/jre
+Default locale: en_RU, platform encoding: UTF-8
+OS name: "mac os x", version: "10.15.7", arch: "x86_64", family: "mac"
+```
+
+### Основная часть
+
+1. Меняем в `pom.xml` блок с зависимостями под наш артефакт из первого пункта задания для Nexus (java с версией 8_282)
+2. Запускаем команду `mvn package` в директории с `pom.xml`, ожидаем успешного окончания
+3. Проверяем директорию `~/.m2/repository/`, находим наш артефакт
+4. В ответе присылаем исправленный файл `pom.xml`
+
+#### Ход работы
+
+1. После редактирования файла [pom.xml](mvn/pom.xml) запускаем `mvn package`:
+
+![Maven terminal](img/Maven-terminal.png)
+
+Исправленный [XML-файл](mvn/pom.xml).
