@@ -43,6 +43,7 @@
 1. [Troubleshooting](06-db-06-troobleshooting/README.md) | [Задание](06-db-06-troobleshooting/06-db-06-troobleshooting-task.md)
 1. [Инфраструктура как код](07-terraform-01-intro/README.md) | [Задание](07-terraform-01-intro/07-terraform-01-intro-task.md)
 1. Основы Terraform
+1. [Введение в Golang](07-terraform-05-golang/README.md) | [Задание](07-terraform-05-golang/07-terraform-05-golang-task.md)
 1. [Жизненный цикл ПО](09-ci-01-intro/README.md) | [Задание](09-ci-01-intro/09-ci-01-intro-task.md)
 1. [Процессы CI/CD](09-ci-02-cicd/README.md) | [Задание](09-ci-02-cicd/09-ci-02-cicd-task.md)
 1. [TeamCity](09-ci-04-teamcity/README.md) | [Задание](09-ci-04-teamcity/09-ci-04-teamcity-task.md)
