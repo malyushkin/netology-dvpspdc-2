@@ -168,7 +168,7 @@ sections:
     task: 09-ci-02-cicd/09-ci-02-cicd-task.md
     result: 09-ci-02-cicd/README.md
   - code: 09-ci-04-teamcity
-    title: Teamcity
-    presentation:
-    task:
-    result:
+    title: TeamCity
+    presentation: 09-ci-04-teamcity/09-ci-04-teamcity-presentation.pdf
+    task: 09-ci-04-teamcity/09-ci-04-teamcity-task.md
+    result: 09-ci-04-teamcity/README.md
