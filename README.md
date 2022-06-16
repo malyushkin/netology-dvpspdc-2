@@ -45,4 +45,5 @@
 1. Основы Terraform
 1. [Жизненный цикл ПО](09-ci-01-intro/README.md) | [Задание](09-ci-01-intro/09-ci-01-intro-task.md)
 1. [Процессы CI/CD](09-ci-02-cicd/README.md) | [Задание](09-ci-02-cicd/09-ci-02-cicd-task.md)
+1. [TeamCity](09-ci-04-teamcity/README.md) | [Задание](09-ci-04-teamcity/09-ci-04-teamcity-task.md)
 

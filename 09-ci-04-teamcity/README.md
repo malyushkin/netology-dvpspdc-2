@@ -77,3 +77,38 @@ roman@nexus3:~$ docker exec -it 9062893b978a cat /nexus-data/admin.password; ech
 ![Teamcity build upload](img/tc-build-upload.png)
 
 5. Добавим ветку [`feature/add_reply`](https://github.com/malyushkin/example-teamcity/tree/feature/add_reply).
+
+6. Добавим метод возвращающий реплику, содержащую слово `hunter`:
+
+```java
+public String sayHunter(){
+   return "Are you really hunter?";
+}
+```
+
+7. Добавим тест для на поиск слова `hunter`:
+
+```java
+ @Test
+ public void welcomerSaysHunter() {
+     assertThat(welcomer.sayWelcome(), containsString("hunter"));
+     assertThat(welcomer.sayFarewell(), containsString("hunter"));
+     assertThat(welcomer.sayHunter(), containsString("hunter"));
+ }
+```
+
+8. Сделаем `push` изменений. Проверим что в TeamCity началась сборка ветки ``:
+
+![Teamcity new branch](img/tc-new-branch.png)
+
+На скриншоте есть сборка с ошибкой, так как в первый раз я добавил неверный метод. 
+
+9. Для настройки конфигурации по сборке `.jar` не обходимо добавить команду `target/*.jar => target` в поле `Artifact paths:`:
+
+![Teamcity jar](img/tc-jar.png)
+
+10. Проведём повторную сборку, проверим сборку:
+
+![Teamcity artifacts](img/tc-artifacts.png)
+
+**Итог**. Практическое задание по теме TeamCity выполнено. [Ссылка](https://github.com/malyushkin/example-teamcity) на репозиторий.
