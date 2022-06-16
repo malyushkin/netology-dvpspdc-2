@@ -157,6 +157,11 @@ sections:
     presentation:
     task:
     result:
+  - code: 07-terraform-05-golang
+    title: Введение в Golang
+    presentation: 07-terraform-05-golang/07-terraform-05-golang-presentation.pdf
+    task: 07-terraform-05-golang/07-terraform-05-golang-task.md
+    result: 07-terraform-05-golang/README.md
   - code: 09-ci-01-intro
     title: Жизненный цикл ПО
     presentation: 09-ci-01-intro/09-ci-01-intro-presentation.pdf
