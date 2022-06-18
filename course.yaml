@@ -152,6 +152,11 @@ sections:
     presentation: 07-terraform-01-intro/07-terraform-01-intro-presentation.pdf
     task: 07-terraform-01-intro/07-terraform-01-intro-task.md
     result: 07-terraform-01-intro/README.md
+  - code: 07-terraform-02-syntax
+    title: Облачные провайдеры и синтаксис Terraform
+    presentation: 07-terraform-02-syntax/07-terraform-02-syntax-presentation.pdf
+    task: 07-terraform-02-syntax/07-terraform-02-syntax-task.md
+    result: 07-terraform-02-syntax/README.md
   - code: 07-terraform-03-basic
     title: Основы Terraform
     presentation:
