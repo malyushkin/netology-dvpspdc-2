@@ -42,6 +42,7 @@
 1. [Elasticsearch](06-db-05-elasticsearch/README.md) | [Задание](06-db-05-elasticsearch/06-db-05-elasticsearch-task.md)
 1. [Troubleshooting](06-db-06-troobleshooting/README.md) | [Задание](06-db-06-troobleshooting/06-db-06-troobleshooting-task.md)
 1. [Инфраструктура как код](07-terraform-01-intro/README.md) | [Задание](07-terraform-01-intro/07-terraform-01-intro-task.md)
+1. [Облачные провайдеры и синтаксис Terraform](07-terraform-02-syntax/README.md) | [Задание](07-terraform-02-syntax/07-terraform-02-syntax-task.md)
 1. Основы Terraform
 1. [Введение в Golang](07-terraform-05-golang/README.md) | [Задание](07-terraform-05-golang/07-terraform-05-golang-task.md)
 1. [Жизненный цикл ПО](09-ci-01-intro/README.md) | [Задание](09-ci-01-intro/09-ci-01-intro-task.md)
