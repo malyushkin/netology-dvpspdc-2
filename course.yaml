@@ -159,9 +159,9 @@ sections:
     result: 07-terraform-02-syntax/README.md
   - code: 07-terraform-03-basic
     title: Основы Terraform
-    presentation:
-    task:
-    result:
+    presentation: 07-terraform-03-basic/07-terraform-03-basic-presentation.pdf
+    task: 07-terraform-03-basic/07-terraform-03-basic-task.md
+    result: 07-terraform-03-basic/README.md
   - code: 07-terraform-05-golang
     title: Введение в Golang
     presentation: 07-terraform-05-golang/07-terraform-05-golang-presentation.pdf
