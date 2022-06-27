@@ -1,0 +1,97 @@
+---
+
+- hosts: wordpress
+  become: yes
+  become_user: root
+  remote_user: ubuntu
+  environment:
+    LANGUAGE: en_US
+    LC_ALL: en_US.UTF-8
+
+  tasks:
+    - include_vars: variables.yml
+
+    - name: Update apt packages
+      apt:
+        upgrade: no
+        update_cache: yes
+
+    - name: Install apache2, mysql, php and other packages
+      ansible.builtin.apt:
+        name:
+          - apache2
+          - ghostscript
+          - libapache2-mod-php
+          - mysql-server
+          - php
+          - php-bcmath
+          - php-curl
+          - php-imagick
+          - php-intl
+          - php-json
+          - php-mbstring
+          - php-mysql
+          - php-xml
+          - php-zip
+        state: present
+        update_cache: true
+
+    - name: Chmod /var/www
+      ansible.builtin.file:
+        path: /var/www
+        owner: www-data
+
+    - name: Download WordPress actual version
+      shell:
+        cmd: curl https://wordpress.org/latest.tar.gz | sudo -u www-data tar zx -C /var/www
+
+    - name: Create wordpress config file
+      copy:
+        dest: /etc/apache2/sites-available/wordpress.conf
+        content: |
+          <VirtualHost *:80>
+            DocumentRoot /var/www/wordpress
+            <Directory /var/www/wordpress>
+              Options FollowSymLinks
+              AllowOverride Limit Options FileInfo
+              DirectoryIndex index.php
+              Require all granted
+            </Directory>
+            <Directory /var/www/wordpress/wp-content>
+              Options FollowSymLinks
+              Require all granted
+            </Directory>
+          </VirtualHost>
+
+    - name: a2ensite wordpress
+      command: a2ensite wordpress
+
+    - name: a2enmod rewrite
+      command: a2enmod rewrite
+
+    - name: a2dissite 000-default
+      command: a2dissite 000-default
+
+    - name: Restart apache2 daemon
+      systemd:
+        name: apache2
+        state: restarted
+        enabled: yes
+
+    - name: Copy WordPress config file
+      command: sudo -u www-data cp /var/www/wordpress/wp-config-sample.php /var/www/wordpress/wp-config.php
+
+    - name: Update WordPress host
+      command: sudo -u www-data sed -i 's/localhost/{{ db01_maliushkin_ru_ip_addr_internal }}/' /var/www/wordpress/wp-config.php
+
+    - name: Update WordPress database
+      command: sudo -u www-data sed -i 's/database_name_here/wordpress/' /var/www/wordpress/wp-config.php
+
+    - name: Update WordPress username
+      command: sudo -u www-data sed -i 's/username_here/wordpress/' /var/www/wordpress/wp-config.php
+
+    - name: Update WordPress password
+      command: sudo -u www-data sed -i 's/password_here/wordpress/' /var/www/wordpress/wp-config.php
+
+
+

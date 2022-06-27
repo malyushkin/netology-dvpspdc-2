@@ -1,0 +1,5 @@
+app_maliushkin_ru_ip_addr_internal: "10.100.1.33"
+db01_maliushkin_ru_ip_addr_internal: "10.100.1.15"
+db02_maliushkin_ru_ip_addr_internal: "10.100.1.27"
+entrance_maliushkin_ru_ip_addr_external: "51.250.87.8"
+monitoring_maliushkin_ru_ip_addr_internal: ""

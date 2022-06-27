@@ -1,0 +1,11 @@
+[main]
+maliushkin.ru ansible_host=51.250.87.8
+
+[mysql_master]
+db01.maliushkin.ru
+
+[mysql_slave]
+db02.maliushkin.ru
+
+[wordpress]
+app.maliushkin.ru
