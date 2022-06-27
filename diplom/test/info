@@ -1,0 +1,19 @@
+terraform output | grep ip | sed 's/ =/:/' > ../cloud-ansible/variables.yml
+
+
+yc compute image list --folder-id standard-images
+
+nginx
+https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-with-ssl-as-a-reverse-proxy-for-jenkins
+
+dns
+https://cloud.yandex.ru/docs/dns/quickstart
+
+nat instance
+https://cloud.yandex.ru/docs/tutorials/routing/nat-instance
+
+MySQL 5.7 Master-Slave Replication on CentOS 7
+https://gist.github.com/fernandoaleman/948987b94a9cc827403f7cacab63d90f
+
+wp
+https://ubuntu.com/tutorials/install-and-configure-wordpress#5-configure-database

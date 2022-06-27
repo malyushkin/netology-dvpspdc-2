@@ -1,0 +1,10 @@
+version: '2.1'
+
+services:
+
+  nginx:
+    image: centos/nginx-18-centos7
+    container_name: nginx
+    restart: always
+    ports:
+      - "8080:8080"
