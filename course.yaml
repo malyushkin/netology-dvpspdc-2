@@ -167,6 +167,11 @@ sections:
     presentation: 07-terraform-05-golang/07-terraform-05-golang-presentation.pdf
     task: 07-terraform-05-golang/07-terraform-05-golang-task.md
     result: 07-terraform-05-golang/README.md
+  - code: 08-ansible-01-base
+    title: Введение в Ansible
+    presentation: 08-ansible-01-base/08-ansible-01-base-presentation.pdf
+    task: 08-ansible-01-base/08-ansible-01-base-task.md
+    result: 08-ansible-01-base/README.md
   - code: 09-ci-01-intro
     title: Жизненный цикл ПО
     presentation: 09-ci-01-intro/09-ci-01-intro-presentation.pdf
