@@ -162,6 +162,11 @@ sections:
     presentation: 07-terraform-03-basic/07-terraform-03-basic-presentation.pdf
     task: 07-terraform-03-basic/07-terraform-03-basic-task.md
     result: 07-terraform-03-basic/README.md
+  - code: 07-terraform-04-teamwork
+    title: Средства командной работы
+    presentation: 07-terraform-04-teamwork/07-terraform-04-teamwork-presentation.pdf
+    task: 07-terraform-04-teamwork/07-terraform-04-teamwork-task.md
+    result: 07-terraform-04-teamwork/README.md
   - code: 07-terraform-05-golang
     title: Введение в Golang
     presentation: 07-terraform-05-golang/07-terraform-05-golang-presentation.pdf

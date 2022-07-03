@@ -1,0 +1,31 @@
+version: 3
+automerge: true
+delete_source_branch_on_merge: true
+
+projects:
+  - workspace: stage
+    dir: .
+    autoplan:
+      when_modified: [ "*.tf" ]
+      enabled: true
+    workflow: myworkflow
+
+  - workspace: prod
+    dir: .
+    autoplan:
+      when_modified: [ "*.tf" ]
+      enabled: true
+    workflow: myworkflow
+
+workflows:
+  myworkflow:
+    plan:
+      steps:
+        - init
+        - plan:
+            extra_args: [ "-lock", "false" ]
+        - run: echo planned
+    apply:
+      steps:
+        - run: echo applying
+        - apply
