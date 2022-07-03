@@ -44,6 +44,7 @@
 1. [Инфраструктура как код](07-terraform-01-intro/README.md) | [Задание](07-terraform-01-intro/07-terraform-01-intro-task.md)
 1. [Облачные провайдеры и синтаксис Terraform](07-terraform-02-syntax/README.md) | [Задание](07-terraform-02-syntax/07-terraform-02-syntax-task.md)
 1. [Основы Terraform](07-terraform-03-basic/README.md) | [Задание](07-terraform-03-basic/07-terraform-03-basic-task.md)
+1. [Средства командной работы](07-terraform-04-teamwork/README.md) | [Задание](07-terraform-04-teamwork/07-terraform-04-teamwork-task.md)
 1. [Введение в Golang](07-terraform-05-golang/README.md) | [Задание](07-terraform-05-golang/07-terraform-05-golang-task.md)
 1. [Введение в Ansible](08-ansible-01-base/README.md) | [Задание](08-ansible-01-base/08-ansible-01-base-task.md)
 1. [Жизненный цикл ПО](09-ci-01-intro/README.md) | [Задание](09-ci-01-intro/09-ci-01-intro-task.md)
