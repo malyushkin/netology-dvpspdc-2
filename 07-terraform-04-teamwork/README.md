@@ -16,7 +16,7 @@
 
 ### Ход работы
 
-1. Зарегистрируемся на [https://app.terraform.io/](app.terraform.io).
+1. Зарегистрируемся на [app.terraform.io](https://app.terraform.io).
 2. Создадим [новый репозиторий](https://github.com/malyushkin/netology-dvpspdc-2-terraform) в Github. 
 3. Добавим репозиторий в **Terraform Cloud**; добавим переменные и запустим workspace:
 
