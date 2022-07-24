@@ -166,14 +166,14 @@ resource "yandex_compute_instance" "gitlab_instance" {
   zone = "ru-central1-a"
 
   resources {
-    cores  = 4
-    memory = 4
+    cores  = 8
+    memory = 8
   }
 
   boot_disk {
     initialize_params {
       image_id = "fd81d2d9ifd50gmvc03g"
-      size     = 10
+      size     = 30
     }
   }
 
@@ -198,7 +198,7 @@ resource "yandex_compute_instance" "runner_instance" {
   boot_disk {
     initialize_params {
       image_id = "fd81d2d9ifd50gmvc03g"
-      size     = 10
+      size     = 30
     }
   }
 

@@ -22,6 +22,10 @@ output "gitlab_maliushkin_ru_ip_addr_internal" {
   value = yandex_compute_instance.gitlab_instance.network_interface.0.ip_address
 }
 
+output "runner_maliushkin_ru_ip_addr_internal" {
+  value = yandex_compute_instance.runner_instance.network_interface.0.ip_address
+}
+
 output "ssh_config" {
   value = <<-EOT
   Host maliushkin.ru
@@ -59,6 +63,13 @@ output "ssh_config" {
 
   Host gitlab.maliushkin.ru
     HostName ${yandex_compute_instance.gitlab_instance.network_interface.0.ip_address}
+    User ubuntu
+    IdentityFile ~/.ssh/id_rsa
+      ProxyJump ubuntu@${yandex_compute_instance.nat_instance.network_interface.0.nat_ip_address}
+      ProxyCommand ssh -W %h:%p -i .ssh/id_rsa
+
+  Host runner.maliushkin.ru
+    HostName ${yandex_compute_instance.runner_instance.network_interface.0.ip_address}
     User ubuntu
     IdentityFile ~/.ssh/id_rsa
       ProxyJump ubuntu@${yandex_compute_instance.nat_instance.network_interface.0.nat_ip_address}
