@@ -1,6 +1,12 @@
 [main]
 maliushkin.ru
 
+[gitlab]
+gitlab.maliushkin.ru
+
+[runner]
+runner.maliushkin.ru
+
 [mysql_master]
 db01.maliushkin.ru
 

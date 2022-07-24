@@ -296,7 +296,7 @@ ansible-playbook roles/entrance/tasks/main.yml
 
 ...
 PLAY RECAP ***********************************************************************************************************************************************************************************************
-maliushkin.ru         : ok=20   changed=18   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+maliushkin.ru              : ok=28   changed=25   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ```
 
 2. Запустим [роль](ansible/roles/db/tasks/main.yml) кластера MySQL:
@@ -355,3 +355,56 @@ monitoring.maliushkin.ru   : ok=15   changed=13   unreachable=0    failed=0    s
 * Проверим URL [grafana.maliushkin.ru](https://grafana.maliushkin.ru):
 
 ![Grafana dashboard](img/grafana-dashboard.png)
+
+## GitLab
+
+1. Запустим [роль](ansible/roles/monitoring/tasks/main.yml) для Gitlab и Runner:
+
+```shell
+ansible-playbook gitlab/tasks/main.yml 
+
+...
+PLAY RECAP ***********************************************************************************************************************************************************************************************
+monitoring.maliushkin.ru   : ok=15   changed=13   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0  
+```
+
+2. Создадим новый `gitlab-runner`:
+
+```shell
+gitlab-runner register
+...
+```
+
+3. В Wordpress-проекте создадим pipeline-файл `.gitlab-ci.yml`:
+
+```shell
+before_script:
+  - eval $(ssh-agent -s)
+  - echo "$ssh_key" | tr -d '\r' | ssh-add -
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+
+deploy-job:
+  stage: deploy
+  script:
+    - echo "Deploy" 
+    - rsync -vz -e "ssh -o StrictHostKeyChecking=no" ./* /var/www/wordpress/
+    - ssh -o StrictHostKeyChecking=no rm -rf /var/www/wordpress/.git
+    - ssh -o StrictHostKeyChecking=no sudo chown www-data /var/www/wordpress/ -R
+```
+
+4. Добавим .git-репозиторий для Wordpress-проекта:
+
+```git
+git init
+git remote add origin http://gitlab.maliushkin.ru/gitlab-instance-824fbaf0/wordpress.git
+git add .
+git commit -m "Initial commit"
+git push -u origin master
+```
+
+Проверим URL [gitlab.maliushkin.ru](https://gitlab.maliushkin.ru):
+
+![Gitlab project](img/gitlab-project.png)
+
+![Gitlab runner](img/gitlab-runner.png)
