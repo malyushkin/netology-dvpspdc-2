@@ -51,3 +51,7 @@
 1. [Процессы CI/CD](09-ci-02-cicd/README.md) | [Задание](09-ci-02-cicd/09-ci-02-cicd-task.md)
 1. [TeamCity](09-ci-04-teamcity/README.md) | [Задание](09-ci-04-teamcity/09-ci-04-teamcity-task.md)
 
+### Итоговая работа по модулю
+
+1. [Дипломный практикум в YandexCloud](devops-diplom-yandexcloud/README.md) | [Задание](devops-diplom-yandexcloud/devops-diplom-yandexcloud-task.md)
+

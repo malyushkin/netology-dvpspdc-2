@@ -1,0 +1,35 @@
+- name: Install Docker packages
+  ansible.builtin.apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+    state: present
+    update_cache: true
+
+- name: Add key gpg
+  shell:
+    cmd: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+- name: Add `docker` repository
+  command: add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+
+- name: Add `docker` policy
+  command: apt-cache policy docker-ce
+
+- name: Install Docker-ce package
+  ansible.builtin.apt:
+    name:
+      - docker-ce
+    state: present
+    update_cache: true
+
+- name: Install Docker Compose
+  shell:
+    cmd: curl -L https://github.com/docker/compose/releases/download/1.29.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+
+- name: Touch the same file, but add/remove some permissions
+  ansible.builtin.file:
+    path: /usr/local/bin/docker-compose
+    mode: +x

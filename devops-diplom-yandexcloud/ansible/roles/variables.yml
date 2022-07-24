@@ -1,0 +1,7 @@
+app_maliushkin_ru_ip_addr_internal: "10.100.1.14"
+db01_maliushkin_ru_ip_addr_internal: "10.100.1.26"
+db02_maliushkin_ru_ip_addr_internal: "10.100.1.24"
+entrance_maliushkin_ru_ip_addr_external: "51.250.79.127"
+gitlab_maliushkin_ru_ip_addr_internal: "10.100.1.27"
+monitoring_maliushkin_ru_ip_addr_internal: "10.100.1.3"
+runner_maliushkin_ru_ip_addr_internal: "10.100.1.9"
