@@ -52,7 +52,7 @@
                 proxy_pass http://{{ app_maliushkin_ru_ip_addr_internal }};
                 proxy_read_timeout 90;
           
-                proxy_redirect http://{{ app_maliushkin_ru_ip_addr_internal }} http://www.maliushkin.ru;
+                proxy_redirect http://{{ app_maliushkin_ru_ip_addr_internal }} https://www.maliushkin.ru;
               }
           }
           
@@ -66,10 +66,10 @@
                 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
                 proxy_set_header X-Forwarded-Proto $scheme;
           
-                proxy_pass http://10.100.1.100;
+                proxy_pass http://{{ gitlab_maliushkin_ru_ip_addr_internal }};
                 proxy_read_timeout 90;
           
-                proxy_redirect http://10.100.1.100 http://gitlab.maliushkin.ru;
+                proxy_redirect http://{{ gitlab_maliushkin_ru_ip_addr_internal }} https://gitlab.maliushkin.ru;
               }
           }
           
@@ -86,7 +86,7 @@
                 proxy_pass http://{{ monitoring_maliushkin_ru_ip_addr_internal }}:3000;
                 proxy_read_timeout 90;
           
-                proxy_redirect http://{{ monitoring_maliushkin_ru_ip_addr_internal }}:3000 http://grafana.maliushkin.ru;
+                proxy_redirect http://{{ monitoring_maliushkin_ru_ip_addr_internal }}:3000 https://grafana.maliushkin.ru;
               }
           }
           
@@ -103,7 +103,7 @@
                 proxy_pass http://{{ monitoring_maliushkin_ru_ip_addr_internal }}:9090;
                 proxy_read_timeout 90;
           
-                proxy_redirect http://{{ monitoring_maliushkin_ru_ip_addr_internal }}:9090 http://prometheus.maliushkin.ru;
+                proxy_redirect http://{{ monitoring_maliushkin_ru_ip_addr_internal }}:9090 https://prometheus.maliushkin.ru;
               }
           }
           
@@ -120,7 +120,7 @@
                 proxy_pass http://{{ monitoring_maliushkin_ru_ip_addr_internal }}:9093;
                 proxy_read_timeout 90;
           
-                proxy_redirect http://{{ monitoring_maliushkin_ru_ip_addr_internal }}:9093 http://alertmanager.maliushkin.ru;
+                proxy_redirect http://{{ monitoring_maliushkin_ru_ip_addr_internal }}:9093 https://alertmanager.maliushkin.ru;
               }
           }
 
@@ -144,18 +144,20 @@
     - name: Install snap certbot
       command: snap install --classic certbot
 
-    #    - name: Request for SSL for `www.maliushkin.ru`
-    #      command: certbot -d www.maliushkin.ru -m malyushkinr@gmail.com --nginx --agree-tos --test-cert
+#    - name: Request for SSL for `www.maliushkin.ru`
+#      command: certbot -d www.maliushkin.ru -m malyushkinr@gmail.com --nginx --agree-tos --test-cert
 
-    #    - name: Request for SSL for `grafana.maliushkin.ru`
-    #      command: certbot -d www.grafana.maliushkin.ru -m malyushkinr@gmail.com --nginx --agree-tos --test-cert
-    #
-    #    - name: Request for SSL for `prometheus.maliushkin.ru`
-    #      command: certbot -d www.prometheus.maliushkin.ru -m malyushkinr@gmail.com --nginx --agree-tos --test-cert
-    #
-    #    - name: Request for SSL for `alertmanager.maliushkin.ru`
-    #      command: certbot -d www.alertmanager.maliushkin.ru -m malyushkinr@gmail.com --nginx --agree-tos --test-cert
+#    - name: Request for SSL for `grafana.maliushkin.ru`
+#      command: certbot -d grafana.maliushkin.ru -m malyushkinr@gmail.com --nginx --agree-tos --test-cert
+#
+#    - name: Request for SSL for `prometheus.maliushkin.ru`
+#      command: certbot -d prometheus.maliushkin.ru -m malyushkinr@gmail.com --nginx --agree-tos --test-cert
+#
+#    - name: Request for SSL for `alertmanager.maliushkin.ru`
+#      command: certbot -d alertmanager.maliushkin.ru -m malyushkinr@gmail.com --nginx --agree-tos --test-cert
 
+#    - name: Request for SSL for `gitlab.maliushkin.ru`
+#      command: certbot -d gitlab.maliushkin.ru -m malyushkinr@gmail.com --nginx --agree-tos
 
     - name: Include Docker task from `common` role
       include_role:
