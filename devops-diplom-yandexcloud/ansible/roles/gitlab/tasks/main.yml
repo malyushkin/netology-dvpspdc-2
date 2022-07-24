@@ -1,0 +1,49 @@
+- hosts: gitlab
+  become: yes
+  become_user: root
+  remote_user: ubuntu
+  environment:
+    LANGUAGE: en_US
+    LC_ALL: en_US.UTF-8
+
+  tasks:
+    - name: Update apt packages
+      apt:
+        upgrade: no
+        update_cache: yes
+
+    - name: Include Docker task from `common` role
+      include_role:
+        name: common
+        tasks_from: docker
+
+    - name: Wget gitlab/master/docker-compose.yml
+      command: wget https://raw.githubusercontent.com/sameersbn/docker-gitlab/master/docker-compose.yml -P /opt/stack/gitlab
+
+    - name: Up all services in compose
+      command: docker-compose -f /opt/stack/gitlab/docker-compose.yml up -d
+
+- hosts: runner
+  become: yes
+  become_user: root
+  remote_user: ubuntu
+  environment:
+    LANGUAGE: en_US
+    LC_ALL: en_US.UTF-8
+
+  tasks:
+    - name: Update apt packages
+      apt:
+        upgrade: no
+        update_cache: yes
+
+    - name: Include Docker task from `common` role
+      include_role:
+        name: common
+        tasks_from: docker
+
+    - name: Download gitlab-runner
+      command: curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | sudo bash
+
+    - name: Install apt gitlab-runner
+      command: apt-get install gitlab-runner

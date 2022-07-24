@@ -1,0 +1,172 @@
+- hosts: main
+  become: yes
+  become_user: root
+  remote_user: ubuntu
+  environment:
+    LANGUAGE: en_US
+    LC_ALL: en_US.UTF-8
+
+  tasks:
+    - include_vars: ../../variables.yml
+
+    - name: Update apt packages
+      apt:
+        upgrade: no
+        update_cache: yes
+
+    - name: Install nginx package
+      ansible.builtin.apt:
+        name:
+          - nginx
+        state: present
+        update_cache: true
+
+    - name: Allow ufw with Nginx HTTP
+      command: ufw allow 'Nginx HTTP'
+
+    - name: Allow ufw with OpenSSH
+      command: ufw allow 'OpenSSH'
+
+    - name: Allow everything and enable UFW
+      community.general.ufw:
+        state: enabled
+        policy: allow
+
+    - name: Clear nginx config file
+      command: truncate --size 0 /etc/nginx/sites-enabled/default
+
+    - name: Copy nginx config content
+      copy:
+        dest: /etc/nginx/sites-enabled/default
+        content: |
+          server {
+              listen 80;
+              server_name www.maliushkin.ru;
+          
+              location / {
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+          
+                proxy_pass http://{{ app_maliushkin_ru_ip_addr_internal }};
+                proxy_read_timeout 90;
+          
+                proxy_redirect http://{{ app_maliushkin_ru_ip_addr_internal }} http://www.maliushkin.ru;
+              }
+          }
+          
+          server {
+              listen 80;
+              server_name gitlab.maliushkin.ru;
+          
+              location / {
+                client_max_body_size 100m;
+                
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+          
+                proxy_pass http://{{ gitlab_maliushkin_ru_ip_addr_internal }}:10080;
+                proxy_read_timeout 90;
+          
+                proxy_redirect http://{{ gitlab_maliushkin_ru_ip_addr_internal }}:10080 https://gitlab.maliushkin.ru;
+              }
+          }
+          
+          server {
+              listen 80;
+              server_name grafana.maliushkin.ru;
+          
+              location / {
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+          
+                proxy_pass http://{{ monitoring_maliushkin_ru_ip_addr_internal }}:3000;
+                proxy_read_timeout 90;
+          
+                proxy_redirect http://{{ monitoring_maliushkin_ru_ip_addr_internal }}:3000 https://grafana.maliushkin.ru;
+              }
+          }
+          
+          server {
+              listen 80;
+              server_name prometheus.maliushkin.ru;
+          
+              location / {
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+          
+                proxy_pass http://{{ monitoring_maliushkin_ru_ip_addr_internal }}:9090;
+                proxy_read_timeout 90;
+          
+                proxy_redirect http://{{ monitoring_maliushkin_ru_ip_addr_internal }}:9090 https://prometheus.maliushkin.ru;
+              }
+          }
+          
+          server {
+              listen 80;
+              server_name alertmanager.maliushkin.ru;
+          
+              location / {
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+          
+                proxy_pass http://{{ monitoring_maliushkin_ru_ip_addr_internal }}:9093;
+                proxy_read_timeout 90;
+          
+                proxy_redirect http://{{ monitoring_maliushkin_ru_ip_addr_internal }}:9093 https://alertmanager.maliushkin.ru;
+              }
+          }
+
+    - name: Restart nginx daemon
+      systemd:
+        name: nginx
+        state: restarted
+        enabled: yes
+
+    - name: Install snapd package
+      apt:
+        name:
+          - snapd
+        state: present
+        update_cache: true
+
+    - name: Install snap core
+      shell:
+        cmd: sudo snap install core; sudo snap refresh core
+
+    - name: Install snap certbot
+      command: snap install --classic certbot
+
+    - name: Request for SSL for `www.maliushkin.ru`
+      command: certbot -d www.maliushkin.ru -m malyushkinr@gmail.com --nginx --agree-tos --test-cert
+
+    - name: Request for SSL for `grafana.maliushkin.ru`
+      command: certbot -d grafana.maliushkin.ru -m malyushkinr@gmail.com --nginx --agree-tos --test-cert
+
+    - name: Request for SSL for `prometheus.maliushkin.ru`
+      command: certbot -d prometheus.maliushkin.ru -m malyushkinr@gmail.com --nginx --agree-tos --test-cert
+
+    - name: Request for SSL for `alertmanager.maliushkin.ru`
+      command: certbot -d alertmanager.maliushkin.ru -m malyushkinr@gmail.com --nginx --agree-tos --test-cert
+
+    - name: Request for SSL for `gitlab.maliushkin.ru`
+      command: certbot -d gitlab.maliushkin.ru -m malyushkinr@gmail.com --nginx --agree-tos --test-cert
+
+    - name: Include Docker task from `common` role
+      include_role:
+        name: common
+        tasks_from: docker
+
+    - name: Include Node exporter task from `common` role
+      include_role:
+        name: common
+        tasks_from: node-exporter

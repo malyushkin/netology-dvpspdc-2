@@ -1,0 +1,156 @@
+- hosts: mysql_master
+  become: yes
+  become_user: root
+  remote_user: ubuntu
+  environment:
+    LANGUAGE: en_US
+    LC_ALL: en_US.UTF-8
+
+  tasks:
+    - include_vars: ../../variables.yml
+
+    - name: Update apt packages
+      apt:
+        upgrade: no
+        update_cache: yes
+
+    - name: Install MySQL packages
+      ansible.builtin.apt:
+        name:
+          - mysql-server
+          - mysql-client
+        state: present
+        update_cache: true
+
+    - name: Update MySQL configuration with bind address
+      ansible.builtin.lineinfile:
+        path: /etc/mysql/mysql.conf.d/mysqld.cnf
+        regexp: '^bind-address'
+        line: bind-address = {{ db01_maliushkin_ru_ip_addr_internal }}
+
+    - name: Update MySQL configuration with server id
+      ansible.builtin.lineinfile:
+        path: /etc/mysql/mysql.conf.d/mysqld.cnf
+        regexp: '^#server-id'
+        line: server-id	= 1
+
+    - name: Update MySQL configuration with log parameters
+      ansible.builtin.blockinfile:
+        path: /etc/mysql/mysql.conf.d/mysqld.cnf
+        block: |
+          log_bin = /var/log/mysql/mysql-bin.log
+          log_bin_index = /var/log/mysql/mysql-bin.log.index
+          relay_log = /var/log/mysql/mysql-relay-bin
+          relay_log_index = /var/log/mysql/mysql-relay-bin.index
+
+    - name: Restart MySQL daemon
+      systemd:
+        name: mysql
+        state: restarted
+        enabled: yes
+
+    - name: Create replicator user SQL query
+      command: sudo mysql -u root -e "CREATE USER IF NOT EXISTS 'replicator'@'{{ db02_maliushkin_ru_ip_addr_internal }}' IDENTIFIED BY '7K3dDfl0uo';"
+      ignore_errors: yes
+
+    - name: Provide user with grant replication slave query
+      command: sudo mysql -u root -e "GRANT REPLICATION SLAVE ON *.* TO 'replicator'@'{{ db02_maliushkin_ru_ip_addr_internal }}';"
+      ignore_errors: yes
+
+    - name: Get and write Master status Position to `mysql_master_position` variable
+      shell:
+        cmd: sudo mysql -u root -e "SHOW MASTER STATUS\G" | grep "Position" | cut -d ":" -f2 | xargs
+      register: mysql_master_position
+
+- hosts: mysql_slave
+  become: yes
+  become_user: root
+  remote_user: ubuntu
+  vars:
+    - mysql_master_position: "{{ hostvars['db01.maliushkin.ru']['mysql_master_position'] }}"
+
+  tasks:
+    - include_vars: ../../variables.yml
+
+    - name: Update apt packages
+      apt:
+        upgrade: no
+        update_cache: yes
+
+    - name: Install MySQL packages
+      ansible.builtin.apt:
+        name:
+          - mysql-server
+          - mysql-client
+        state: present
+        update_cache: true
+
+    - name: Update MySQL configuration with bind address
+      ansible.builtin.lineinfile:
+        path: /etc/mysql/mysql.conf.d/mysqld.cnf
+        regexp: '^bind-address'
+        line: bind-address = {{ db02_maliushkin_ru_ip_addr_internal }}
+
+    - name: Update MySQL configuration with server id
+      ansible.builtin.lineinfile:
+        path: /etc/mysql/mysql.conf.d/mysqld.cnf
+        regexp: '^#server-id'
+        line: server-id	= 2
+
+    - name: Update MySQL configuration with log parameters
+      ansible.builtin.blockinfile:
+        path: /etc/mysql/mysql.conf.d/mysqld.cnf
+        block: |
+          log_bin = /var/log/mysql/mysql-bin.log
+          log_bin_index = /var/log/mysql/mysql-bin.log.index
+          relay_log = /var/log/mysql/mysql-relay-bin
+          relay_log_index = /var/log/mysql/mysql-relay-bin.index
+
+    - name: Restart MySQL daemon
+      systemd:
+        name: mysql
+        state: restarted
+        enabled: yes
+
+    - name: Stop Slave SQL query
+      command: sudo mysql -u root -e "STOP SLAVE;"
+
+    - name: Change Master settings SQL query
+      command: sudo mysql -u root -e "CHANGE MASTER TO MASTER_HOST ='{{ db01_maliushkin_ru_ip_addr_internal }}', MASTER_USER ='replicator', MASTER_PASSWORD ='7K3dDfl0uo', MASTER_LOG_FILE = 'mysql-bin.000002', MASTER_LOG_POS = {{ mysql_master_position.stdout }};"
+
+    - name: Start Slave SQL query
+      command: sudo mysql -u root -e "START SLAVE;"
+
+# WordPress items
+- hosts: mysql_master
+  become: yes
+  become_user: root
+  remote_user: ubuntu
+
+  tasks:
+    - include_vars: ../../variables.yml
+
+    - name: Create wordpress user SQL query
+      command: sudo mysql -u root -e "CREATE USER IF NOT EXISTS 'wordpress'@'{{ app_maliushkin_ru_ip_addr_internal }}' IDENTIFIED BY 'wordpress';"
+
+    - name: Create wordpress database SQL query
+      command: sudo mysql -u root -e "CREATE DATABASE IF NOT EXISTS wordpress;"
+
+    - name: Provide wordpress user with all privileges SQL query
+      command: sudo mysql -u root -e "GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpress'@'{{ app_maliushkin_ru_ip_addr_internal }}'"
+
+- hosts: mysql_master, mysql_slave
+  become: yes
+  become_user: root
+  remote_user: ubuntu
+
+  tasks:
+    - name: Include Docker task from `common` role
+      include_role:
+        name: common
+        tasks_from: docker
+
+    - name: Include Node exporter task from `common` role
+      include_role:
+        name: common
+        tasks_from: node-exporter
