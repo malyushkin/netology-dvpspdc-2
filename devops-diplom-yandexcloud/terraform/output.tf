@@ -1,4 +1,4 @@
-output "host_maliushkin_ru_ip_addr_external" {
+output "entrance_maliushkin_ru_ip_addr_external" {
   value = yandex_compute_instance.entrance_instance.network_interface.0.nat_ip_address
 }
 
@@ -24,6 +24,10 @@ output "gitlab_maliushkin_ru_ip_addr_internal" {
 
 output "ssh_config" {
   value = <<-EOT
+  Host maliushkin.ru
+    HostName ${yandex_compute_instance.entrance_instance.network_interface.0.nat_ip_address}
+    User ubuntu
+    IdentityFile ~/.ssh/id_rsa
 
   Host db01.maliushkin.ru
     HostName ${yandex_compute_instance.db01_instance.network_interface.0.ip_address}
