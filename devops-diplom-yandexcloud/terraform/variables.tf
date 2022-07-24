@@ -7,3 +7,5 @@ variable "yandex_folder_id" {
 variable "yandex_cloud_id" {
   default = "b1grvrc5vladcufpdjjn"
 }
+
+variable "SSH_ID_RSA_PUB" {}
