@@ -182,3 +182,8 @@ sections:
     presentation: 09-ci-04-teamcity/09-ci-04-teamcity-presentation.pdf
     task: 09-ci-04-teamcity/09-ci-04-teamcity-task.md
     result: 09-ci-04-teamcity/README.md
+  exams:
+  - code: devops-diplom-yandexcloud
+    title: Дипломный практикум в YandexCloud
+    task: devops-diplom-yandexcloud/devops-diplom-yandexcloud-task.md
+    result: devops-diplom-yandexcloud/README.md
