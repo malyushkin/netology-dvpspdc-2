@@ -31,7 +31,7 @@ resource "yandex_compute_instance" "nat_instance" {
 
   metadata = {
     test     = "test_str"
-    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
+    ssh-keys = "ubuntu:${var.SSH_ID_RSA_PUB}"
   }
 }
 
@@ -57,7 +57,7 @@ resource "yandex_compute_instance" "entrance_instance" {
   }
 
   metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
+    ssh-keys = "ubuntu:${var.SSH_ID_RSA_PUB}"
   }
 }
 
@@ -82,7 +82,7 @@ resource "yandex_compute_instance" "db01_instance" {
   }
 
   metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
+    ssh-keys = "ubuntu:${var.SSH_ID_RSA_PUB}"
   }
 }
 
@@ -107,7 +107,7 @@ resource "yandex_compute_instance" "db02_instance" {
   }
 
   metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
+    ssh-keys = "ubuntu:${var.SSH_ID_RSA_PUB}"
   }
 }
 
@@ -132,7 +132,7 @@ resource "yandex_compute_instance" "app_instance" {
   }
 
   metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
+    ssh-keys = "ubuntu:${var.SSH_ID_RSA_PUB}"
   }
 }
 
@@ -157,7 +157,7 @@ resource "yandex_compute_instance" "monitoring_instance" {
   }
 
   metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
+    ssh-keys = "ubuntu:${var.SSH_ID_RSA_PUB}"
   }
 }
 
@@ -182,7 +182,7 @@ resource "yandex_compute_instance" "gitlab_instance" {
   }
 
   metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
+    ssh-keys = "ubuntu:${var.SSH_ID_RSA_PUB}"
   }
 }
 
@@ -207,6 +207,6 @@ resource "yandex_compute_instance" "runner_instance" {
   }
 
   metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
+    ssh-keys = "ubuntu:${var.SSH_ID_RSA_PUB}"
   }
 }
