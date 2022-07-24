@@ -9,7 +9,7 @@
     LC_ALL: en_US.UTF-8
 
   tasks:
-    - include_vars: variables.yml
+    - include_vars: ../../variables.yml
 
     - name: Update apt packages
       apt:
@@ -93,5 +93,15 @@
     - name: Update WordPress password
       command: sudo -u www-data sed -i 's/password_here/wordpress/' /var/www/wordpress/wp-config.php
 
+
+    - name: Include Docker task from `common` role
+      include_role:
+        name: common
+        tasks_from: docker
+
+    - name: Include Node exporter task from `common` role
+      include_role:
+        name: common
+        tasks_from: node-exporter
 
 

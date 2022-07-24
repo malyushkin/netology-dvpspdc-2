@@ -1,0 +1,38 @@
+- hosts: monitoring
+  become: yes
+  become_user: root
+  remote_user: ubuntu
+  environment:
+    LANGUAGE: en_US
+    LC_ALL: en_US.UTF-8
+
+  tasks:
+    - name: Update apt packages
+      apt:
+        upgrade: no
+        update_cache: yes
+
+    - name: Include Docker task from `common` role
+      include_role:
+        name: common
+        tasks_from: docker
+
+    - name: Include Node exporter task from `common` role
+      include_role:
+        name: common
+        tasks_from: node-exporter
+
+    - name: Synchronization
+      copy:
+        src: ../stack/
+        dest: "/opt/stack/"
+        owner: root
+        group: root
+        mode: 0644
+      become: true
+
+    - name: Pull all images in compose
+      command: docker-compose -f /opt/stack/docker-compose.yaml pull
+
+    - name: Up all services in compose
+      command: docker-compose -f /opt/stack/docker-compose.yaml up -d

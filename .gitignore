@@ -19,3 +19,6 @@ terraform.tfstate.backup
 # .tfstate files
 *.tfstate
 *.tfstate.*
+
+# diplom ignore files
+devops-diplom-yandexcloud/.env

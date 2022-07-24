@@ -1,5 +1,3 @@
----
-
 - hosts: main
   become: yes
   become_user: root
@@ -9,7 +7,7 @@
     LC_ALL: en_US.UTF-8
 
   tasks:
-    - include_vars: variables.yml
+    - include_vars: ../../variables.yml
 
     - name: Update apt packages
       apt:
@@ -28,6 +26,11 @@
 
     - name: Allow ufw with OpenSSH
       command: ufw allow 'OpenSSH'
+
+    - name: Allow everything and enable UFW
+      community.general.ufw:
+        state: enabled
+        policy: allow
 
     - name: Clear nginx config file
       command: truncate --size 0 /etc/nginx/sites-enabled/default
@@ -80,10 +83,10 @@
                 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
                 proxy_set_header X-Forwarded-Proto $scheme;
           
-                proxy_pass http://{{ monitoring_maliushkin_ru_ip_addr_internal }}:80;
+                proxy_pass http://{{ monitoring_maliushkin_ru_ip_addr_internal }}:3000;
                 proxy_read_timeout 90;
           
-                proxy_redirect http://{{ monitoring_maliushkin_ru_ip_addr_internal }}:80 http://grafana.maliushkin.ru;
+                proxy_redirect http://{{ monitoring_maliushkin_ru_ip_addr_internal }}:3000 http://grafana.maliushkin.ru;
               }
           }
           
@@ -114,10 +117,10 @@
                 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
                 proxy_set_header X-Forwarded-Proto $scheme;
           
-                proxy_pass http://10.100.1.103;
+                proxy_pass http://{{ monitoring_maliushkin_ru_ip_addr_internal }}:9093;
                 proxy_read_timeout 90;
           
-                proxy_redirect http://10.100.1.103 http://alertmanager.maliushkin.ru;
+                proxy_redirect http://{{ monitoring_maliushkin_ru_ip_addr_internal }}:9093 http://alertmanager.maliushkin.ru;
               }
           }
 
@@ -141,16 +144,25 @@
     - name: Install snap certbot
       command: snap install --classic certbot
 
-    - name: Request for SSL for `www.maliushkin.ru`
-      command: certbot -d www.maliushkin.ru -m malyushkinr@gmail.com --nginx --agree-tos --test-cert
+    #    - name: Request for SSL for `www.maliushkin.ru`
+    #      command: certbot -d www.maliushkin.ru -m malyushkinr@gmail.com --nginx --agree-tos --test-cert
 
-    - name: Request for SSL for `grafana.maliushkin.ru`
-      command: certbot -d www.maliushkin.ru -m malyushkinr@gmail.com --nginx --agree-tos --test-cert
+    #    - name: Request for SSL for `grafana.maliushkin.ru`
+    #      command: certbot -d www.grafana.maliushkin.ru -m malyushkinr@gmail.com --nginx --agree-tos --test-cert
+    #
+    #    - name: Request for SSL for `prometheus.maliushkin.ru`
+    #      command: certbot -d www.prometheus.maliushkin.ru -m malyushkinr@gmail.com --nginx --agree-tos --test-cert
+    #
+    #    - name: Request for SSL for `alertmanager.maliushkin.ru`
+    #      command: certbot -d www.alertmanager.maliushkin.ru -m malyushkinr@gmail.com --nginx --agree-tos --test-cert
 
-    - name: Request for SSL for `prometheus.maliushkin.ru`
-      command: certbot -d www.maliushkin.ru -m malyushkinr@gmail.com --nginx --agree-tos --test-cert
 
-    - name: Request for SSL for `alertmanager.maliushkin.ru`
-      command: certbot -d www.maliushkin.ru -m malyushkinr@gmail.com --nginx --agree-tos --test-cert
+    - name: Include Docker task from `common` role
+      include_role:
+        name: common
+        tasks_from: docker
 
-    -
+    - name: Include Node exporter task from `common` role
+      include_role:
+        name: common
+        tasks_from: node-exporter
