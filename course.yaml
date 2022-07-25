@@ -172,6 +172,11 @@ sections:
     presentation: 07-terraform-05-golang/07-terraform-05-golang-presentation.pdf
     task: 07-terraform-05-golang/07-terraform-05-golang-task.md
     result: 07-terraform-05-golang/README.md
+  - code: 07-terraform-06-providers
+    title: Написание собственных провайдеров для Terraform
+    presentation: 07-terraform-06-providers/07-terraform-06-providers-presentation.pdf
+    task: 07-terraform-06-providers/07-terraform-06-providers-task.md
+    result: 07-terraform-06-providers/README.md
   - code: 08-ansible-01-base
     title: Введение в Ansible
     presentation: 08-ansible-01-base/08-ansible-01-base-presentation.pdf
