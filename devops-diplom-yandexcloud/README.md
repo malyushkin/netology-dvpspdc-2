@@ -388,9 +388,11 @@ deploy-job:
   stage: deploy
   script:
     - echo "Deploy" 
+    # Upload to server
     - rsync -vz -e "ssh -o StrictHostKeyChecking=no" ./* /var/www/wordpress/
     - ssh -o StrictHostKeyChecking=no rm -rf /var/www/wordpress/.git
-    - ssh -o StrictHostKeyChecking=no sudo chown www-data /var/www/wordpress/ -R
+    # Provide file permissions
+    - ssh -o StrictHostKeyChecking=no sudo chown -R www-data /var/www/wordpress/ 
 ```
 
 4. Добавим .git-репозиторий для Wordpress-проекта:
