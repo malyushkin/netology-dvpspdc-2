@@ -158,7 +158,7 @@ created_at: "2022-01-30T21:20:07.589430939Z"
 key_algorithm: RSA_2048
 ```
 
-Создадим новый профиль `create srv-test-profile` и установим для него созданный ключ активации ([key.json](terraform/key.json)): 
+Создадим новый профиль `create srv-test-profile` и установим для него созданный ключ активации (`key.json`): 
 
 ```bash
 ╰─➤ yc config profile create srv-test-profile

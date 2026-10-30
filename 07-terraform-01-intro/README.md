@@ -86,7 +86,7 @@ on darwin_amd64
 
 ### Ход работы
 
-Для выполнения задачи скачаем предыдущую версию Terraform по [ссылке](https://releases.hashicorp.com/terraform/1.1.0/terraform_1.1.0_darwin_amd64.zip). Переименуем [бинарный файл](terraform110) и скопируем его в `/usr/local/bin`.
+Для выполнения задачи скачаем предыдущую версию Terraform по [ссылке](https://releases.hashicorp.com/terraform/1.1.0/terraform_1.1.0_darwin_amd64.zip). Переименуем бинарный файл в `terraform110` и скопируем его в `/usr/local/bin`.
 
 Промерим версии:
 
