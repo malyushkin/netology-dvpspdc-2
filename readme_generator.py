@@ -50,6 +50,10 @@ with open(FILE['md_name'], "w", encoding="utf-8") as md:
     md.write(f"# {course[KEY['title_key']]}")
     md.write("\n\n")
 
+    if "intro" in course:
+        md.write(course["intro"])
+        md.write("\n")
+
     if "sections" not in course:
         sys.exit()
 

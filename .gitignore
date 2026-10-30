@@ -22,3 +22,6 @@ terraform.tfstate.backup
 
 # diplom ignore files
 devops-diplom-yandexcloud/.env
+# Vagrant and local DB data
+**/.vagrant/
+06-db-04-postgresql/docker/netology_postgresqldata/

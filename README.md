@@ -1,5 +1,18 @@
 # Курс DevOps-инженер (Netology)
 
+Мои решения заданий курса «DevOps-инженер» в Нетологии (октябрь 2021 - июль 2022). Курс закончен,
+есть [сертификат](https://netology.ru/sharing/0af71dd91f345e92a685bca865ffd9d9).
+
+Темы: Linux и сети, Git, Bash и Python, Docker и Docker Swarm, PostgreSQL, MySQL, Elasticsearch,
+Terraform, Ansible, CI/CD (GitLab, TeamCity).
+
+Главное здесь - [диплом в Yandex Cloud](devops-diplom-yandexcloud/README.md). Terraform через
+Terraform Cloud создаёт инфраструктуру. Ansible раскатывает на неё nginx с сертификатами Let's Encrypt,
+MySQL с репликацией, WordPress, GitLab с CI и мониторинг на Prometheus, Grafana и Alertmanager.
+Всё работало на собственном домене.
+
+README собирает скрипт [`readme_generator.py`](readme_generator.py) из [`course.yaml`](course.yaml).
+
 ## DevOps и системное администрирование
 
 ### Практические задания
