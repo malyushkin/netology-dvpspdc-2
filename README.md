@@ -1,5 +1,7 @@
 # Курс DevOps-инженер (Netology)
 
+*Solutions for the Netology DevOps Engineer course (2021-2022): Terraform, Ansible, Docker, CI/CD, Yandex Cloud.*
+
 Мои решения заданий курса «DevOps-инженер» в Нетологии (октябрь 2021 - июль 2022). Курс закончен,
 есть [сертификат](https://netology.ru/sharing/0af71dd91f345e92a685bca865ffd9d9).
 
