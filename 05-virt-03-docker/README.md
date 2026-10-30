@@ -21,7 +21,7 @@ Hey, Netology
 ```
 Опубликуйте созданный форк в своем репозитории и предоставьте ответ в виде ссылки на https://hub.docker.com/username_repo.
 
-Создадим [Dockerfile](app/Dockerfile), в нём пропишем команду `COPY` для перезаписи стартовой страницы Nginx:
+Создадим [Dockerfile](app-1/Dockerfile), в нём пропишем команду `COPY` для перезаписи стартовой страницы Nginx:
 
 ```docker
 FROM nginx:latest

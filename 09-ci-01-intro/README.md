@@ -7,7 +7,7 @@
 
 ### Ход работы
 
-Авторизируемся на сайте [Atlassian.com](https://www.atlassian.com) под своей учётной записью. Получим [бесплатную версию]((https://www.atlassian.com/ru/software/jira/free)) Jira. 
+Авторизируемся на сайте [Atlassian.com](https://www.atlassian.com) под своей учётной записью. Получим [бесплатную версию](https://www.atlassian.com/ru/software/jira/free) Jira. 
 
 Создадим проект Netology, добавим две доски: SCRUM и Kanban:
 
