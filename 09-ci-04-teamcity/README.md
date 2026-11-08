@@ -14,7 +14,7 @@
 
 ![Yandex Cloud VMs](img/yc-vms.png)
 
-2. Запустим Teamcity (server), авторизуем агент и сделаем fork [репозитория](https://github.com/aragastmatb/example-teamcity): [malyushkin/example-teamcity](https://github.com/malyushkin/example-teamcity).
+2. Запустим Teamcity (server), авторизуем агент и сделаем fork [репозитория](https://github.com/aragastmatb/example-teamcity): [example-teamcity](example-teamcity/) (бывший форк `malyushkin/example-teamcity`, перенесён сюда с историей).
 
 ## Основная часть
 
@@ -66,7 +66,7 @@ roman@nexus3:~$ docker exec -it 9062893b978a cat /nexus-data/admin.password; ech
 ...
 ```
 
-На странице администрирования Nexus копируем адрес и вставляем его на место нерабочего ([тут](https://github.com/malyushkin/example-teamcity/edit/master/pom.xml)):
+На странице администрирования Nexus копируем адрес и вставляем его на место нерабочего ([тут](example-teamcity/pom.xml)):
 
 `http://51.250.34.239:8081/repository/maven-releases/` → `http://84.201.179.201:8081/repository/maven-releases/`
 
@@ -76,7 +76,7 @@ roman@nexus3:~$ docker exec -it 9062893b978a cat /nexus-data/admin.password; ech
 
 ![Teamcity build upload](img/tc-build-upload.png)
 
-5. Добавим ветку [`feature/add_reply`](https://github.com/malyushkin/example-teamcity/tree/feature/add_reply).
+5. Добавим ветку `feature/add_reply` (позже слита в `master`, изменения в [example-teamcity/src](example-teamcity/src/)).
 
 6. Добавим метод возвращающий реплику, содержащую слово `hunter`:
 
@@ -111,4 +111,4 @@ public String sayHunter(){
 
 ![Teamcity artifacts](img/tc-artifacts.png)
 
-**Итог**. Практическое задание по теме TeamCity выполнено. [Ссылка](https://github.com/malyushkin/example-teamcity) на репозиторий.
+**Итог**. Практическое задание по теме TeamCity выполнено. [Ссылка](example-teamcity/) на код.
