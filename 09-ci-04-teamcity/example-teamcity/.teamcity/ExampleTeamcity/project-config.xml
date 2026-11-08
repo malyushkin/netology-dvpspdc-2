@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2021.1/project-config.xsd">
+  <name>Example Teamcity</name>
+  <parameters>
+    <param name="cat_name" value="Wizzard" spec="text validationMode='any' readOnly='true'" />
+    <param name="env.cat_name" value="%cat_name%" />
+    <param name="env.name" value="Alexey1" />
+  </parameters>
+  <project-extensions>
+    <extension id="PROJECT_EXT_1" type="versionedSettings">
+      <parameters>
+        <param name="buildSettings" value="ALWAYS_USE_CURRENT" />
+        <param name="enabled" value="true" />
+        <param name="rootId" value="ExampleTeamcity_HttpsGithubComMalyushkinExampleTeamcityRefsHeadsMaster" />
+        <param name="showChanges" value="false" />
+      </parameters>
+    </extension>
+    <extension id="PROJECT_EXT_2" type="JetBrains.SharedResources">
+      <parameters>
+        <param name="enabled" value="true" />
+        <param name="name" value="ya" />
+        <param name="quota" value="100" />
+        <param name="type" value="quoted" />
+      </parameters>
+    </extension>
+  </project-extensions>
+  <cleanup />
+</project>
+
